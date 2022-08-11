@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import {createStore} from 'redux';
 
 function reducers() {
