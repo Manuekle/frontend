@@ -1,11 +1,13 @@
 import React from 'react';
 
-import BuyCategoryComponent from "../components/BuyCategoryComponent";
+import Landing from "../components/Landing";
+import Buy from "../components/Buy";
 
 function HomePage() {
   return (
     <section className="container mx-auto">
-      <BuyCategoryComponent/>
+      <Landing/>
+      <Buy/>
     </section>
   );
 }

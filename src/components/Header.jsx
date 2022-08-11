@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import img from "../assets/imgs/manganiacos.jpg";
+
+import { AnimatePresence, motion, useCycle } from "framer-motion";
 
 // ? icons
 import User from "../assets/svg/user";
@@ -11,11 +13,13 @@ import Logout from "../assets/svg/logout";
 import Place from "../assets/svg/place";
 
 // DarkMode
-import DarkMode from "./DarkModeComponent";
-import Cart from "./CartComponent";
+import DarkMode from "./DarkModeSwitch";
+import Cart from "./Cart";
 
-function HeaderComponent() {
-  const [show, setShow] = useState(true);
+function Header() {
+  // const [show, setShow] = useState(true);
+  const [open, cycleOpen] = useCycle(false, true);
+
   return (
     <>
       {/* Desktop */}
@@ -72,9 +76,7 @@ function HeaderComponent() {
             <span className="relative">
               <button
                 type="button"
-                onClick={() => {
-                  setShow(!show);
-                }}
+                onClick={cycleOpen}
                 className="relative pt-1"
               >
                 <Bag fill="white" />
@@ -83,7 +85,7 @@ function HeaderComponent() {
                 style={{ fontSize: "10px" }}
                 className="rounded-full bg-white flex justify-center absolute px-1 py-0.2 top-0 left-3.5"
               >
-                0
+                2
               </h1>
             </span>
           </div>
@@ -114,18 +116,25 @@ function HeaderComponent() {
           </div>
         </section>
       </header>
-      {show ? (
-        <></>
-      ) : (
-        <>
-          <Cart />
-        </>
-      )}
-
-      {/* CartOpen */}
-      {/* <Cart/> */}
+      <>
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ x: "100vh", opacity: 1 , zIndex: 0}}
+              animate={{ x: "0vh" }}
+              exit={{ x: "100vh", opacity: 0, zIndex: 0}}
+              transition={{ duration: 0.5 }}   
+              className="fixed top-0 left-0 right-0 bottom-0"        
+            >
+              <>
+                <Cart onClick={cycleOpen}/>
+              </>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </>
     </>
   );
 }
 
-export default HeaderComponent;
+export default Header;              

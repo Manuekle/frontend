@@ -3,26 +3,28 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Header
-import HeaderComponent from "../components/HeaderComponent";
+import Header from "../components/Header";
 
 // Footer
-import FooterComponent from "../components/FooterComponent";
+import Footer from "../components/Footer";
 
 // Pages
 import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
 
+// import
+
 function Base() {
   return (
     <>
-      <HeaderComponent />
+      <Header />
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
-      <FooterComponent />
+      <Footer />
     </>
   );
 }

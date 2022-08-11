@@ -1,7 +1,7 @@
 import React from "react";
 import CartAdd from "../assets/svg/cartAdd";
 import Tag from "../assets/svg/tag";
-function CardComponent() {
+function Card() {
   return (
     <>
       <div className="col-span-1 relative">
@@ -71,4 +71,4 @@ function CardComponent() {
   );
 }
 
-export default CardComponent;
+export default Card;

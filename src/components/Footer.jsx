@@ -4,7 +4,7 @@ import Facebook from "../assets/svg/facebook";
 import Instagram from "../assets/svg/instagram";
 import Whatsapp from "../assets/svg/whatsapp";
 
-function FooterComponent() {
+function Footer() {
   return (
     <footer className="bg-black py-4">
       <div className="container mx-auto grid grid-cols-6 gap-40 pt-10 pb-8">
@@ -55,4 +55,4 @@ function FooterComponent() {
   );
 }
 
-export default FooterComponent;
+export default Footer;
