@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import img from "../assets/imgs/manganiacos.jpg";
 
@@ -8,8 +8,14 @@ import Bag from "../assets/svg/bag";
 import Email from "../assets/svg/email";
 import Search from "../assets/svg/search";
 import Logout from "../assets/svg/logout";
+import Place from "../assets/svg/place";
+
+// DarkMode
+import DarkMode from "./DarkModeComponent";
+import Cart from "./CartComponent";
 
 function HeaderComponent() {
+  const [show, setShow] = useState(true);
   return (
     <>
       {/* Desktop */}
@@ -36,6 +42,9 @@ function HeaderComponent() {
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-end items-center">
             <span className="">
+              <DarkMode />
+            </span>
+            <span className="">
               <a href="/">
                 <Email fill="white" />{" "}
               </a>
@@ -55,10 +64,21 @@ function HeaderComponent() {
                 <Logout fill="white" />{" "}
               </a>
             </span>
-            <span className="relative">
-              <a href="/" className="relative">
-                <Bag fill="white" />
+            <span className="">
+              <a href="/">
+                <Place fill="white" />{" "}
               </a>
+            </span>
+            <span className="relative">
+              <button
+                type="button"
+                onClick={() => {
+                  setShow(!show);
+                }}
+                className="relative pt-1"
+              >
+                <Bag fill="white" />
+              </button>
               <h1
                 style={{ fontSize: "10px" }}
                 className="rounded-full bg-white flex justify-center absolute px-1 py-0.2 top-0 left-3.5"
@@ -94,6 +114,16 @@ function HeaderComponent() {
           </div>
         </section>
       </header>
+      {show ? (
+        <></>
+      ) : (
+        <>
+          <Cart />
+        </>
+      )}
+
+      {/* CartOpen */}
+      {/* <Cart/> */}
     </>
   );
 }
