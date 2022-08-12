@@ -23,7 +23,7 @@ function Header() {
   return (
     <>
       {/* Desktop */}
-      <header className="bg-black py-4 hidden lg:block">
+      <header className="bg-black py-4 hidden lg:block border-b border-b-gray-100">
         <section className="container mx-auto grid grid-cols-6 gap-62 py-2">
           <div className="col-span-2 flex flex-row gap-3 justify-start items-center">
             {/* <div className="">
@@ -45,15 +45,28 @@ function Header() {
             </div>
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-end items-center">
-            <span className="">
-              <DarkMode />
-            </span>
-            <span className="">
-              <a href="/">
-                <Email fill="white" />{" "}
-              </a>
-            </span>
-            <span className="relative">
+            <span className="relative flex flex-row">
+            <AnimatePresence>
+              {searcher && (
+                <motion.div
+                  initial={{ x: "0vh", opacity: 1}}
+                  animate={{ x: "-1vh" }}
+                  exit={{ x: "0vh", opacity: 1 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="top-0 left-0 right-0 bottom-0"
+                >
+                  <>
+                    <section className="bg-black">
+                      <input
+                        type="text"
+                        className="w-full text-white font-normal px-4 rounded-sm bg-black border-2 border-white"
+                        placeholder="Buscar"
+                      />
+                    </section>
+                  </>
+                </motion.div>
+              )}
+            </AnimatePresence>
               <button
                 className="relative pt-1"
                 type="button"
@@ -62,6 +75,15 @@ function Header() {
                 <Search color="white" />{" "}
               </button>
             </span>
+            <span className="">
+              <DarkMode />
+            </span>
+            <span className="">
+              <a href="/">
+                <Email fill="white" />{" "}
+              </a>
+            </span>
+
             <span className="">
               <a href="/">
                 <User fill="white" />{" "}
@@ -87,7 +109,7 @@ function Header() {
               </button>
               <h1
                 style={{ fontSize: "10px" }}
-                className="rounded-full bg-white flex font-bold justify-center absolute px-1.5 py-0.5 top-0 left-3.5"
+                className="rounded-full bg-white text-black flex font-bold justify-center absolute px-1.5 py-0.5 top-0 left-3.5"
               >
                 2
               </h1>
@@ -140,17 +162,17 @@ function Header() {
         </section>
       </header>
       <>
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {searcher && (
             <motion.div
               initial={{ y: "-2vh", opacity: 1 }}
               animate={{ y: "0vh" }}
-              exit={{ y: "-3vh", opacity: 1 }}
+              exit={{ y: "-2vh", opacity: 1 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="top-0 left-0 right-0 bottom-0"
             >
               <>
-                <section className="bg-black pt-2 pb-4">
+                <section className="bg-black pt-4 pb-4 border-b border-b-gray-100">
                   <div className="container mx-auto flex justify-center">
                     <Search color="white" />{" "}
                   </div>
@@ -158,7 +180,7 @@ function Header() {
               </>
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </>
       <>
         <AnimatePresence>

@@ -43,4 +43,11 @@ code {
   background: #333;
 }
 
-/* scroll */
+
+/* dark mode tailwind */
+@media (prefers-color-scheme: dark) {
+  html {
+    background: rgba(0, 0, 0, 0.912);
+    color: #fff;
+  }
+}

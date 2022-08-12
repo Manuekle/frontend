@@ -6,7 +6,7 @@ import Whatsapp from "../assets/svg/whatsapp";
 
 function Footer() {
   return (
-    <footer className="bg-black py-4">
+    <footer className="bg-black py-4 border-t border-t-gray-100">
       <div className="container mx-auto grid grid-cols-6 gap-8 xl:gap-40 pt-10 pb-8 px-4">
         <div className="col-span-6 xl:col-span-2 flex flex-col">
           <h1 className="text-white font-bold tracking-widest uppercase text-sm">
