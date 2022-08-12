@@ -14,7 +14,9 @@ function Card(props) {
   const [openProduct, cycleOpenProduct] = useCycle(false, true);
 
   const img =
-    "https://images-na.ssl-images-amazon.com/images/I/81nRRMSeyvS.jpg";
+    "https://www.logocrea.com/wp-content/uploads/2016/07/fondo-gris.jpg";
+  // const img =
+  //   "https://images-na.ssl-images-amazon.com/images/I/81nRRMSeyvS.jpg";
 
   return (
     <>
@@ -38,7 +40,7 @@ function Card(props) {
             <div className="grid grid-cols-6">
               <div className="col-span-5">
                 <h1 className="text-black text-sm font-bold uppercase">
-                  Mieruko-chan
+                  SAME NAME
                 </h1>
                 <h1 className="text-black text-sm font-bold uppercase">
                   $ 12.00
@@ -67,7 +69,6 @@ function Card(props) {
             </Modal>
           )}
         </AnimatePresence> */}
-
       </>
       <>
         <AnimatePresence>
@@ -75,7 +76,7 @@ function Card(props) {
             <motion.div
               initial={{ x: "100vh", opacity: 1, zIndex: 0 }}
               animate={{ x: "0vh" }}
-              exit={{ x: "100vh", opacity: 0, zIndex: 0 }}
+              exit={{ x: "100vh", opacity: 1, zIndex: 0 }}
               transition={{ duration: 0.5 }}
               className="fixed top-0 left-0 right-0 bottom-0"
             >

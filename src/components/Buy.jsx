@@ -9,7 +9,7 @@ function Buy() {
       <section className="pt-8">
         <div className="bg-gradient-to-r from-black via-neutral-900 to-stone-800 bg-center h-28 mx-4 xl:mx-0 xl:h-56 flex items-center justify-center rounded-lg shadow-lg">
           <h1 className="text-white font-bold text-lg xl:text-5xl text-center tracking-wide">
-            COMPRA POR CATEGORIAS
+            LOS MAS RECOMENDADOS
           </h1>
         </div>
         <br />

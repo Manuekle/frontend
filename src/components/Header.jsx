@@ -18,6 +18,7 @@ import Cart from "./Cart";
 function Header() {
   // const [show, setShow] = useState(true);
   const [open, cycleOpen] = useCycle(false, true);
+  const [searcher, cycleOpenSearcher] = useCycle(false, true);
 
   return (
     <>
@@ -52,10 +53,14 @@ function Header() {
                 <Email fill="white" />{" "}
               </a>
             </span>
-            <span className="">
-              <a href="/">
+            <span className="relative">
+              <button
+                className="relative pt-1"
+                type="button"
+                onClick={cycleOpenSearcher}
+              >
                 <Search color="white" />{" "}
-              </a>
+              </button>
             </span>
             <span className="">
               <a href="/">
@@ -135,20 +140,33 @@ function Header() {
         </section>
       </header>
       <>
-        <section className="bg-black pt-2 pb-4">
-          <div className="container mx-auto flex justify-end">
-            <Search color="white" />{" "}
-          </div>
-        </section>
+        <AnimatePresence>
+          {searcher && (
+            <motion.div
+              initial={{ y: "-2vh", opacity: 1 }}
+              animate={{ y: "0vh" }}
+              exit={{ y: "-3vh", opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="top-0 left-0 right-0 bottom-0"
+            >
+              <>
+                <section className="bg-black pt-2 pb-4">
+                  <div className="container mx-auto flex justify-center">
+                    <Search color="white" />{" "}
+                  </div>
+                </section>
+              </>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </>
-
       <>
         <AnimatePresence>
           {open && (
             <motion.div
               initial={{ x: "100vh", opacity: 1, zIndex: 0 }}
               animate={{ x: "0vh" }}
-              exit={{ x: "100vh", opacity: 0, zIndex: 0 }}
+              exit={{ x: "100vh", opacity: 1, zIndex: 0 }}
               transition={{ duration: 0.5 }}
               className="fixed top-0 left-0 right-0 bottom-0"
             >
@@ -159,8 +177,6 @@ function Header() {
           )}
         </AnimatePresence>
       </>
-
-      
     </>
   );
 }
