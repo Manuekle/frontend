@@ -35,7 +35,7 @@ function Cart(props) {
                 <h1 className="text-center text-md font-normal">
                   Su carrito está vacío
                 </h1>
-                <button className="py-3 px-8 bg-black rounded-md">
+                <button className="py-4 px-8 bg-black rounded-md">
                   <h1 className="text-sm font-bold text-white tracking-widest uppercase">
                     Empezar a Comprar
                   </h1>

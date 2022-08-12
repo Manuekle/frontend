@@ -7,8 +7,8 @@ import Whatsapp from "../assets/svg/whatsapp";
 function Footer() {
   return (
     <footer className="bg-black py-4">
-      <div className="container mx-auto grid grid-cols-6 gap-40 pt-10 pb-8">
-        <div className="col-span-2 flex flex-col">
+      <div className="container mx-auto grid grid-cols-6 gap-8 xl:gap-40 pt-10 pb-8 px-4">
+        <div className="col-span-6 xl:col-span-2 flex flex-col">
           <h1 className="text-white font-bold tracking-widest uppercase text-sm">
             POLÍTICAS
           </h1>
@@ -16,7 +16,7 @@ function Footer() {
           <p className="text-white text-sm">Términos & Condiciones</p>
           <p className="text-white text-sm">Envíos</p>
         </div>
-        <div className="col-span-2 flex flex-col">
+        <div className="col-span-6 xl:col-span-2 flex flex-col">
           <h1 className="text-white font-bold tracking-widest uppercase text-sm">
             Contáctanos
           </h1>
@@ -26,7 +26,7 @@ function Footer() {
             para nuestros lectores.
           </p>
         </div>
-        <div className="col-span-2 flex flex-col">
+        <div className="col-span-6 xl:col-span-2 flex flex-col">
           <h1 className="text-white font-bold tracking-widest uppercase text-sm">
             SÍGUENOS
           </h1>

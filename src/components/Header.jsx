@@ -1,7 +1,5 @@
 import React from "react";
 
-import img from "../assets/imgs/manganiacos.jpg";
-
 import { AnimatePresence, motion, useCycle } from "framer-motion";
 
 // ? icons
@@ -11,6 +9,7 @@ import Email from "../assets/svg/email";
 import Search from "../assets/svg/search";
 import Logout from "../assets/svg/logout";
 import Place from "../assets/svg/place";
+import Menu from "../assets/svg/menu";
 
 // DarkMode
 import DarkMode from "./DarkModeSwitch";
@@ -55,7 +54,7 @@ function Header() {
             </span>
             <span className="">
               <a href="/">
-                <Search fill="white" />{" "}
+                <Search color="white" />{" "}
               </a>
             </span>
             <span className="">
@@ -83,7 +82,7 @@ function Header() {
               </button>
               <h1
                 style={{ fontSize: "10px" }}
-                className="rounded-full bg-white flex justify-center absolute px-1 py-0.2 top-0 left-3.5"
+                className="rounded-full bg-white flex font-bold justify-center absolute px-1.5 py-0.5 top-0 left-3.5"
               >
                 2
               </h1>
@@ -93,48 +92,77 @@ function Header() {
       </header>
       {/* Mobile */}
       <header className="bg-black py-4 lg:hidden block">
-        <section className="container mx-auto grid grid-cols-3 gap-1 px-2">
-          <div className="col-span-1 flex flex-row gap-3 justify-start items-center">
-            <div className="text-white font-bold text-2xl"></div>
+        <section className="container mx-auto grid grid-cols-3 gap-3 px-2">
+          <div className="col-span-1 flex flex-row gap-2 justify-start items-center pl-4">
+            <span className="flex justify-start items-center">
+              <a href="/">
+                <Menu fill="white" />{" "}
+              </a>
+            </span>
+            <span className="flex justify-start items-center">
+              <a href="/">
+                <Search color="white" />{" "}
+              </a>
+            </span>
           </div>
-          <div className="col-span-1 flex flex-row gap-3 justify-start items-center">
-            <div className="">
-              <img
-                src={img}
-                alt="Manganiacos"
-                className="rounded-full w-full"
-              />
-            </div>
-            <div className="text-white font-bold text-2xl">
-              <h1>Manganiacos</h1>
-            </div>
+          <div className="col-span-1 flex flex-row gap-3 justify-center items-center">
+            <span className="flex justify-center items-center ">
+              <div className="text-white font-bold text-2xl text-center">
+                <h1>Manganiacos</h1>
+              </div>
+            </span>
           </div>
-          <div className="col-span-1 flex flex-row gap-3 justify-end items-center">
-            <div className="text-white font-bold text-2xl">
-              <h1></h1>
-            </div>
+          <div className="col-span-1 flex flex-row gap-2 justify-end items-center pr-4">
+            <span className="flex justify-start items-center">
+              <DarkMode />
+            </span>
+            <span className="relative">
+              <button
+                type="button"
+                onClick={cycleOpen}
+                className="relative pt-1"
+              >
+                <Bag fill="white" />
+              </button>
+              <h1
+                style={{ fontSize: "10px" }}
+                className="rounded-full bg-white flex font-bold justify-center absolute px-1.5 py-0.5 top-0 left-3.5"
+              >
+                2
+              </h1>
+            </span>
           </div>
         </section>
       </header>
       <>
+        <section className="bg-black pt-2 pb-4">
+          <div className="container mx-auto flex justify-end">
+            <Search color="white" />{" "}
+          </div>
+        </section>
+      </>
+
+      <>
         <AnimatePresence>
           {open && (
             <motion.div
-              initial={{ x: "100vh", opacity: 1 , zIndex: 0}}
+              initial={{ x: "100vh", opacity: 1, zIndex: 0 }}
               animate={{ x: "0vh" }}
-              exit={{ x: "100vh", opacity: 0, zIndex: 0}}
-              transition={{ duration: 0.5 }}   
-              className="fixed top-0 left-0 right-0 bottom-0"        
+              exit={{ x: "100vh", opacity: 0, zIndex: 0 }}
+              transition={{ duration: 0.5 }}
+              className="fixed top-0 left-0 right-0 bottom-0"
             >
               <>
-                <Cart onClick={cycleOpen}/>
+                <Cart onClick={cycleOpen} />
               </>
             </motion.div>
           )}
         </AnimatePresence>
       </>
+
+      
     </>
   );
 }
 
-export default Header;              
+export default Header;
