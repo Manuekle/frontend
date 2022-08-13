@@ -120,7 +120,7 @@ function Product(props) {
                 </div>
               </div>
             </div>
-            <div className="mt-56 flex col-span-3 justify-center">
+            <div className="mt-36 flex col-span-3 justify-center">
               <button
                 type="button"
                 onClick={handleShow}

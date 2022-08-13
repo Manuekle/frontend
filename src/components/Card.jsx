@@ -26,7 +26,7 @@ function Card(props) {
             <img
               src={img}
               alt=""
-              className="rounded-t-lg border-t-2 border-l-2 border-r-2 border-t-black border-l-black border-r-black"
+              className="rounded-t-lg border-t-2 border-l-2 border-r-2 dark:border-t-white dark:border-l-white dark:border-r-white border-t-black border-l-black border-r-black"
             />
             <div className="absolute top-2 right-2 flex">
               <span className="bg-black px-2 py-2 bg-opacity-40 backdrop-blur-md rounded drop-shadow-lg">
@@ -36,7 +36,7 @@ function Card(props) {
               </span>
             </div>
           </section>
-          <div className="p-2 bg-white border-b-2 border-l-2 border-r-2 border-b-black border-l-black border-r-black rounded-b-lg">
+          <div className="p-2 bg-white border-b-2 border-l-2 border-r-2 dark:border-b-white dark:border-l-white dark:border-r-white border-b-black border-l-black border-r-black rounded-b-lg">
             <div className="grid grid-cols-6">
               <div className="col-span-5">
                 <h1 className="text-black text-sm font-bold uppercase">

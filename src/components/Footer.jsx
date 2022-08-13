@@ -6,47 +6,47 @@ import Whatsapp from "../assets/svg/whatsapp";
 
 function Footer() {
   return (
-    <footer className="bg-black py-4 border-t border-t-gray-100">
+    <footer className="bg-white dark:bg-black py-4 border-t-2 border-t-black dark:border-t-white">
       <div className="container mx-auto grid grid-cols-6 gap-8 xl:gap-40 pt-10 pb-8 px-4">
         <div className="col-span-6 xl:col-span-2 flex flex-col">
-          <h1 className="text-white font-bold tracking-widest uppercase text-sm">
+          <h1 className="dark:text-white text-black font-bold tracking-widest uppercase text-sm">
             POLÍTICAS
           </h1>
           <br />
-          <p className="text-white text-sm">Términos & Condiciones</p>
-          <p className="text-white text-sm">Envíos</p>
+          <p className="dark:text-white text-black text-sm">Términos & Condiciones</p>
+          <p className="dark:text-white text-black text-sm">Envíos</p>
         </div>
         <div className="col-span-6 xl:col-span-2 flex flex-col">
-          <h1 className="text-white font-bold tracking-widest uppercase text-sm">
+          <h1 className="dark:text-white text-black font-bold tracking-widest uppercase text-sm">
             Contáctanos
           </h1>
           <br />
-          <p className="text-white text-sm">
+          <p className="dark:text-white text-black text-sm">
             Suscríbete para recibir lanzamientos, descuentos, y contenido curado
             para nuestros lectores.
           </p>
         </div>
         <div className="col-span-6 xl:col-span-2 flex flex-col">
-          <h1 className="text-white font-bold tracking-widest uppercase text-sm">
+          <h1 className="dark:text-white text-black font-bold tracking-widest uppercase text-sm">
             SÍGUENOS
           </h1>
           <br />
-          <p className="text-white text-sm">Síguenos en nuestras redes sociales</p>
+          <p className="dark:text-white text-black text-sm">Síguenos en nuestras redes sociales</p>
           <div className="flex flex-row pt-4">
             <span             
-              className="rounded-l-md border-r-1 border-gray-100 p-4 border"
+              className="rounded-l-lg border-r-2 dark:border-white border-black p-4 border-2"
             >
-              <Facebook fill="white" color="white" />
+              <Facebook className="dark:fill-white fill-black dark:text-white text-black" />
             </span>
             <span             
-              className="border-l-0 border-r-0 border-gray-100 p-4 border"
+              className="border-l-0 border-r-0 dark:border-white border-black p-4 border-2"
             >
-              <Instagram fill="white" color="white" />
+              <Instagram className="dark:fill-white fill-black dark:text-white text-black" />
             </span>
             <span             
-              className="rounded-r-md border-l-1 border-gray-100 p-4 border"
+              className="rounded-r-lg border-l-2 dark:border-white border-black p-4 border-2"
             >
-              <Whatsapp fill="white" color="white" />
+              <Whatsapp className="dark:fill-white fill-black dark:text-white text-black" />
             </span>
           </div>
         </div>

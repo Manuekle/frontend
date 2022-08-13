@@ -30,7 +30,7 @@ function Cart(props) {
             </div>
             <hr />
             {/* Empty */}
-            <section className="mt-96 flex items-center justify-center">
+            <section className="mt-80 flex items-center justify-center">
               <div className="flex flex-col gap-8">
                 <h1 className="text-center text-md font-normal">
                   Su carrito está vacío

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Moon from "../assets/svg/moon";
 import Sun from "../assets/svg/sun";
@@ -6,25 +6,51 @@ import Sun from "../assets/svg/sun";
 import { motion } from "framer-motion";
 
 function DarkModeSwitch() {
-  const [isOn, setIsOn] = useState(false);
-  const toggleSwitch = () => setIsOn(!isOn);
+  const [theme, setTheme] = useState(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+    if (window.matchMedia("(prefers-color-scheme)").media !== "not all") {
+      console.log("🎉 Dark mode is supported");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   const spring = {
     type: "spring",
     stiffness: 700,
     damping: 30,
   };
+
+  const toggleSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
-    <>      
+    <>
       <div className="flex justify-center items-center" onClick={toggleSwitch}>
-        <motion.div
-          layout
-          transition={spring}
-        >
-          <motion.div whileTap={{ rotate: 360 }}>
-            {isOn ? <Sun fill="white" /> : <Moon fill="white" />}
+        <button type="button" onClick={toggleSwitch}>
+          <motion.div layout transition={spring}>
+            <motion.div whileTap={{ rotate: 360 }}>
+              {theme === "dark" ? (
+                <Moon className="dark:fill-white fill-black" />
+              ) : (
+                <Sun className="dark:fill-white fill-black" />
+              )}
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </button>
       </div>
     </>
   );

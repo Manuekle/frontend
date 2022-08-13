@@ -10,22 +10,26 @@ import Footer from "../components/Footer";
 
 // Pages
 import HomePage from "../pages/HomePage";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 // import
 
 function Base() {
   return (
-    <>
-      <Header />
+    <main className="bg-white dark:bg-black">
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/account/login" element={<LoginPage />} />
+          <Route path="/account/register" element={<RegisterPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <Footer />
       </Router>
-      <Footer />
-    </>
+    </main>
   );
 }
 
