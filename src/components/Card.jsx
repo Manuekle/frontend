@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Cart from "../assets/svg/cart";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
 import Product from "./Product";
 
-// import Modal from "./Modal";
+import { Link } from "react-router-dom";
 
-// import { AnimatePresence } from "framer-motion";
 function Card(props) {
-  // const [isModalOpen, setModalOpen] = useState(false);
+  const { product } = props;
 
-  // const close = () => setModalOpen(false);
-  // const open = () => setModalOpen(true);
   const [openProduct, cycleOpenProduct] = useCycle(false, true);
 
-  const img =
-    "https://www.logocrea.com/wp-content/uploads/2016/07/fondo-gris.jpg";
   // const img =
   //   "https://images-na.ssl-images-amazon.com/images/I/81nRRMSeyvS.jpg";
 
@@ -23,27 +18,37 @@ function Card(props) {
       <section className="w-auto h-auto">
         <div className="w-full h-full shadow-lg">
           <section className="relative z-50">
-            <img
-              src={img}
-              alt=""
-              className="rounded-t-lg border-t-2 border-l-2 border-r-2 dark:border-t-white dark:border-l-white dark:border-r-white border-t-black border-l-black border-r-black"
-            />
+            <Link to={`/product/${product._id}`}>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="rounded-t-lg border-t-2 border-l-2 border-r-2 dark:border-t-white dark:border-l-white dark:border-r-white border-t-black border-l-black border-r-black"
+              />
+            </Link>
             <div className="absolute top-2 right-2 flex">
-              <span className="bg-black px-2 py-2 bg-opacity-40 backdrop-blur-md rounded drop-shadow-lg">
-                <h1 className="tracking-widest uppercase text-white text-xs">
-                  Disponible
-                </h1>
-              </span>
+              {product.countInStock > 0 ? (
+                <span className="bg-black px-2 py-2 bg-opacity-40 backdrop-blur-md rounded drop-shadow-lg">
+                  <h1 className="tracking-widest uppercase text-white text-xs">
+                    Disponible
+                  </h1>
+                </span>
+              ) : (
+                <span className="bg-black px-2 py-2 bg-opacity-40 backdrop-blur-md rounded drop-shadow-lg">
+                  <h1 className="tracking-widest uppercase text-white text-xs">
+                    Agotado
+                  </h1>
+                </span>
+              )}
             </div>
           </section>
           <div className="p-2 bg-white border-b-2 border-l-2 border-r-2 dark:border-b-white dark:border-l-white dark:border-r-white border-b-black border-l-black border-r-black rounded-b-lg">
             <div className="grid grid-cols-6">
               <div className="col-span-5">
                 <h1 className="text-black text-sm font-bold uppercase">
-                  SAME NAME
+                  {product.name}
                 </h1>
                 <h1 className="text-black text-sm font-bold uppercase">
-                  $ 12.00
+                  $ {product.price}
                 </h1>
               </div>
               <div className="col-span-1 flex items-center justify-center">

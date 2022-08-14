@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AnimatePresence, motion, useCycle } from "framer-motion";
 
+import { logout } from "../actions/userActions";
 
 // ? icons
 import User from "../assets/svg/user";
@@ -19,10 +21,25 @@ import DarkMode from "./DarkModeSwitch";
 import Cart from "./Cart";
 
 function Header() {
-  // const [show, setShow] = useState(true);
   const [open, cycleOpen] = useCycle(false, true);
   const [searcher, cycleOpenSearcher] = useCycle(false, true);
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const dispatch = useDispatch();
+
+  let navigate = useNavigate();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    if (userInfo) {
+      navigate("/account/login");
+    }
+  };
+
+  // useEffect(() => {
+  // }, [userInfo, navigate]);
   return (
     <>
       {/* Desktop */}
@@ -38,7 +55,9 @@ function Header() {
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-center items-center">
             <div className="dark:text-white text-black font-normal">
-              <Link to="/" style={{ fontSize: "14px" }}>Tienda</Link>
+              <Link to="/store" style={{ fontSize: "14px" }}>
+                Tienda
+              </Link>
             </div>
             <div className="dark:text-white text-black font-normal">
               <h1 style={{ fontSize: "14px" }}>Categorias</h1>
@@ -49,27 +68,27 @@ function Header() {
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-end items-center">
             <span className="relative flex flex-row">
-            <AnimatePresence>
-              {searcher && (
-                <motion.div
-                  initial={{ x: "0vh", opacity: 1}}
-                  animate={{ x: "-1vh" }}
-                  exit={{ x: "0vh", opacity: 1 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="top-0 left-0 right-0 bottom-0"
-                >
-                  <>
-                    <section className="bg-black">
-                      <input
-                        type="text"
-                        className="w-full text-white font-normal px-4 rounded-sm bg-black border-2 border-white"
-                        placeholder="Buscar"
-                      />
-                    </section>
-                  </>
-                </motion.div>
-              )}
-            </AnimatePresence>
+              <AnimatePresence>
+                {searcher && (
+                  <motion.div
+                    initial={{ x: "0vh", opacity: 1 }}
+                    animate={{ x: "-1vh" }}
+                    exit={{ x: "0vh", opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="top-0 left-0 right-0 bottom-0"
+                  >
+                    <>
+                      <section className="bg-black">
+                        <input
+                          type="text"
+                          className="w-full text-white font-normal px-4 rounded-sm bg-black border-2 border-white"
+                          placeholder="Buscar"
+                        />
+                      </section>
+                    </>
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <button
                 className="relative pt-1"
                 type="button"
@@ -79,29 +98,34 @@ function Header() {
               </button>
             </span>
             <span className="">
-              <DarkMode/>
+              <DarkMode />
             </span>
             <span className="">
               <a href="/">
                 <Email className="dark:fill-white fill-black" />{" "}
               </a>
             </span>
+            {userInfo ? (
+              <>
+                <span className="pt-1">
+                  <button onClick={logoutHandler}>
+                    <Logout className="dark:fill-white fill-black" />{" "}
+                  </button>
+                </span>
+                <span className="">
+                  <Link to="/dashboard">
+                    <Place className="dark:fill-white fill-black" />{" "}
+                  </Link>
+                </span>
+              </>
+            ) : (
+              <span className="">
+                <Link to="/account/login">
+                  <User className="dark:fill-white fill-black" />{" "}
+                </Link>
+              </span>
+            )}
 
-            <span className="">
-              <Link to="/account/login">
-                <User className="dark:fill-white fill-black" />{" "}
-              </Link>
-            </span>
-            <span className="">
-              <a href="/">
-                <Logout className="dark:fill-white fill-black" />{" "}
-              </a>
-            </span>
-            <span className="">
-              <a href="/">
-                <Place className="dark:fill-white fill-black" />{" "}
-              </a>
-            </span>
             <span className="relative">
               <button
                 type="button"

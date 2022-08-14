@@ -1,7 +1,7 @@
 import React from "react";
 import Arrow from "../assets/svg/arrow";
 import Category from "./Category";
-import Card from "./Card";
+// import Card from "./Card";
 
 function Buy() {
   return (
@@ -16,7 +16,7 @@ function Buy() {
         <>
           <div className="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 px-4 xl:px-0">
             {/* card */}
-            <Card />
+            {/* <Card /> */}
           </div>
           {/* slider */}
           <div className="flex flex-row justify-center items-centered gap-4 pt-6 pb-6">
