@@ -1,10 +1,10 @@
 import React from "react";
 
 // Icons
-import Bag from "../assets/svg/bag";
+import Search from "../assets/svg/search";
 import Close from "../assets/svg/close";
 
-function Cart(props) {
+function Searcher(props) {
   return (
     <div>
       <div>
@@ -13,11 +13,11 @@ function Cart(props) {
             <div className="grid grid-cols-2 gap-56 border p-5">
               <div className="col-span-1 flex justify-start gap-3 items-center">
                 <span>
-                  <Bag fill="black" />
+                  <Search color="black" />
                 </span>
                 <span>
-                  {/* <h1 className="text-md font-bold">0 Artículos</h1> */}
-                  <h1 className="text-md font-bold">Carrito</h1>
+                <h1 className="text-md font-normal">¿Que buscas?</h1>
+                  
                 </span>
               </div>
               <div className="col-span-1 flex justify-end items-center pt-2">
@@ -49,4 +49,4 @@ function Cart(props) {
   );
 }
 
-export default Cart;
+export default Searcher;

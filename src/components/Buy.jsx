@@ -1,6 +1,6 @@
 import React from "react";
 import Arrow from "../assets/svg/arrow";
-import Category from "./Category";
+// import Category from "./Category";
 // import Card from "./Card";
 
 function Buy() {

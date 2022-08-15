@@ -19,7 +19,7 @@ function Product(props) {
       setShow(false);
     }, 3000);
   };
-
+  // TODO: Crear una function que me guarde el id del producto y mostarlo en el modal
   const img =
     "https://www.logocrea.com/wp-content/uploads/2016/07/fondo-gris.jpg";
   return (
@@ -27,7 +27,7 @@ function Product(props) {
       <section className="absolute bg-white top-0 right-0 flex justify-center h-full border">
         <div className="flex flex-col">
           <div className="grid grid-cols-2 gap-56 border p-5">
-            <div className="col-span-1 flex justify-start gap-3">
+            <div className="col-span-1 flex justify-start gap-3 items-center">
               <span>
                 <Fast fill="black" />
               </span>
@@ -36,7 +36,7 @@ function Product(props) {
                 <h1 className="text-md font-bold">Vista rápida</h1>
               </span>
             </div>
-            <div className="col-span-1 flex justify-end items-center">
+            <div className="col-span-1 flex justify-end items-center pt-2">
               <span>
                 <button
                   type="button"

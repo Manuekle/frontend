@@ -16,6 +16,7 @@ import LoginPage from "../pages/LoginPage";
 // store page
 import StorePage from "../pages/StorePage";
 import ProductPage from "../pages/ProductPage";
+import CartPage from "../pages/CartPage";
 
 import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -38,6 +39,8 @@ function Base() {
           <Route path="/account/register" element={<RegisterPage />} />
           {/* store */}
           <Route path="/store" element={<StorePage />} />
+          {/* cart */}
+          <Route path="/cart/:id" element={<CartPage />} />
           {/* product */}
           <Route path="/product/:id" element={<ProductPage />} />
           {/* dahboard */}

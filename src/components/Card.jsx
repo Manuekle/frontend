@@ -10,13 +10,11 @@ function Card(props) {
 
   const [openProduct, cycleOpenProduct] = useCycle(false, true);
 
-  // const img =
-  //   "https://images-na.ssl-images-amazon.com/images/I/81nRRMSeyvS.jpg";
 
   return (
     <>
       <section className="w-auto h-auto">
-        <div className="w-full h-full shadow-lg">
+        <div className="shadow-lg">
           <section className="relative z-50">
             <Link to={`/product/${product._id}`}>
               <img
@@ -41,7 +39,7 @@ function Card(props) {
               )}
             </div>
           </section>
-          <div className="p-2 bg-white border-b-2 border-l-2 border-r-2 dark:border-b-white dark:border-l-white dark:border-r-white border-b-black border-l-black border-r-black rounded-b-lg">
+          <div className="p-2 bg-white border-b-2 border-l-2 border-r-2 dark:border-b-white dark:border-l-white dark:border-r-white border-b-black border-l-black border-r-black rounded-b-lg h-30">
             <div className="grid grid-cols-6">
               <div className="col-span-5">
                 <h1 className="text-black text-sm font-bold uppercase">
@@ -51,7 +49,7 @@ function Card(props) {
                   $ {product.price}
                 </h1>
               </div>
-              <div className="col-span-1 flex items-center justify-center">
+              <div className="col-span-1 flex items-start justify-center">
                 <button
                   type="button"
                   onClick={cycleOpenProduct}

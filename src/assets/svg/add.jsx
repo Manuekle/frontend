@@ -2,8 +2,8 @@ import * as React from "react";
 
 function Add(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" height={20} width={20} {...props}>
-      <path d="M9.458 14.792v-4.25h-4.25V9.458h4.25v-4.25h1.084v4.25h4.25v1.084h-4.25v4.25z" />
+    <svg xmlns="http://www.w3.org/2000/svg" height={24} width={24} {...props}>
+      <path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6z" />
     </svg>
   );
 }

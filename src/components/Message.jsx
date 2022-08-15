@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import Check from "../assets/svg/check";
 
 function Message() {
@@ -16,7 +18,12 @@ function Message() {
             </span>
           </div>
           <div className="col-span-1 flex justify-end items-center">
-            <a href="/" className="text-white text-sm font-normal border-b hover:border-b-white border-b-gray-300">Ver carrito</a>
+            <Link
+              to="/cart"
+              className="text-white text-sm font-normal border-b hover:border-b-white border-b-gray-300"
+            >
+              Ver carrito
+            </Link>
           </div>
         </div>
         {/* ¡Articulo añadido a su cesta! */}
