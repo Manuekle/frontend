@@ -68,7 +68,7 @@ function InventoryPage() {
 
   const createProductHandler = () => {
     dispatch(createProduct());
-    console.log("createProductHandler");
+    // console.log("createProductHandler");
   };
 
   const deleteHandler = (id) => {
