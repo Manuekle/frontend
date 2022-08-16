@@ -12,6 +12,8 @@ import Loader from "../assets/svg/loader";
 import ShippingCar from "../assets/svg/shippingCar";
 import Empty from "../assets/svg/empty";
 
+import Error from "../components/Error";
+
 import CartProduct from "../components/CartProducts";
 
 function CartPage() {
@@ -46,7 +48,9 @@ function CartPage() {
           />
         </div>
       ) : error ? (
-        <div className="grid place-items-center h-96">Error de conexion</div>
+        <div className="grid place-items-center h-auto my-8 lg:my-44">
+          <Error />
+        </div>
       ) : (
         <section className="container mx-auto px-4 xl:px-24 my-8 lg:mb-64 mb-8">
           <div className="grid grid-cols-4 gap-4">

@@ -8,6 +8,8 @@ import Header from "../components/Header";
 // Footer
 import Footer from "../components/Footer";
 
+import Back from "../components/Back";
+
 // Pages
 // auth pages
 import HomePage from "../pages/HomePage";
@@ -23,14 +25,19 @@ import NotFoundPage from "../pages/NotFoundPage";
 
 // DashboardPage
 import DashboardPage from "./Dashboard";
-import ProfilePage from "../pages/ProfilePage";
+import AccountPage from "../pages/AccountPage";
 import OrdersPage from "../pages/OrdersPage";
+import InventoryPage from "../pages/InventoryPage";
+import ProductEditPage from "../pages/ProductEditPage";
 
 function Base() {
   return (
     <main className="bg-white dark:bg-black">
       <Router>
         <Header />
+        <div className="container mx-auto lg:px-0 px-4 pt-8 lg:pt-10">
+          <Back />
+        </div>
         <Routes>
           {/* home */}
           <Route path="/" element={<HomePage />} />
@@ -45,8 +52,13 @@ function Base() {
           <Route path="/product/:id" element={<ProductPage />} />
           {/* dahboard */}
           <Route path="/dashboard" element={<DashboardPage />}>
-            <Route path="profile" element={<ProfilePage />} />
+            <Route index element={<AccountPage />} />
             <Route path="orders" element={<OrdersPage />} />
+            <Route path="inventory" element={<InventoryPage />} />
+            <Route
+              path="inventory/product/:id/edit"
+              element={<ProductEditPage />}
+            />
           </Route>
           {/* not found */}
           <Route path="*" element={<NotFoundPage />} />

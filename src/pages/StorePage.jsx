@@ -8,6 +8,7 @@ import { listProducts } from "../actions/productActions";
 import Card from "../components/Card";
 import Categories from "../components/Categories";
 import Editorials from "../components/Editorials";
+import Error from "../components/Error";
 
 import Loader from "../assets/svg/loader";
 
@@ -39,7 +40,9 @@ function StoragePage() {
           />
         </div>
       ) : error ? (
-        <div className="grid place-items-center h-96">Error de conexion</div>
+        <div className="grid place-items-center h-auto my-8 lg:my-44">
+          <Error />
+        </div>
       ) : (
         <section className="container mx-auto py-4 my-20">
           <div className="grid grid-cols-6 gap-4">
@@ -72,14 +75,14 @@ function StoragePage() {
                     <motion.div
                       key="categories"
                       initial="collapsed"
-                      animate="open"                      
+                      animate="open"
                       exit="collapsed"
                       variants={{
                         open: { opacity: 1, height: "auto" },
                         collapsed: {
                           opacity: 0,
                           height: "auto",
-                        },                        
+                        },
                       }}
                     >
                       <Categories />
@@ -95,7 +98,7 @@ function StoragePage() {
                         Editoriales
                       </h1>
                     </div>
-                    <div class="order-last ">
+                    <div className="order-last ">
                       <button type="button" onClick={cycleOpenEditorials}>
                         <motion.div layout>
                           <motion.div whileTap={{ rotate: 180 }}>
@@ -113,14 +116,14 @@ function StoragePage() {
                     <motion.div
                       key="editorials"
                       initial="collapsed"
-                      animate="open"                      
+                      animate="open"
                       exit="collapsed"
                       variants={{
                         open: { opacity: 1, height: "auto" },
                         collapsed: {
                           opacity: 0,
                           height: "auto",
-                        },                        
+                        },
                       }}
                     >
                       <Editorials />

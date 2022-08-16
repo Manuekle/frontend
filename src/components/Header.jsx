@@ -27,7 +27,7 @@ function Header() {
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  console.log(cartItems);
+  // console.log(cartItems);
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;

@@ -13,6 +13,8 @@ import ShippingCar from "../assets/svg/shippingCar";
 import Lock from "../assets/svg/lock";
 import Star from "../assets/svg/star";
 
+import Error from "../components/Error";
+
 import { listProductDetails } from "../actions/productActions";
 
 function ProductPage() {
@@ -36,7 +38,6 @@ function ProductPage() {
   const params = useParams();
 
   let navigate = useNavigate();
-
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -64,7 +65,9 @@ function ProductPage() {
           />
         </div>
       ) : error ? (
-        <div className="grid place-items-center h-96">Error de conexion</div>
+        <div className="grid place-items-center h-auto my-8 lg:my-44">
+          <Error />
+        </div>
       ) : (
         <>
           <section className="container mx-auto px-4 xl:px-24 my-8">
@@ -133,7 +136,10 @@ function ProductPage() {
                   </span>
                 </span>
                 <span className="gap-6 flex flex-col border-2 rounded-md border-black dark:border-white py-4 px-4">
-                  <button onClick={addToCartHandler} className="py-4 px-8 bg-white hover:bg-zinc-200 rounded-md w-full">
+                  <button
+                    onClick={addToCartHandler}
+                    className="py-4 px-8 bg-white hover:bg-zinc-200 rounded-md w-full"
+                  >
                     <h1 className="text-sm font-bold text-black tracking-widest uppercase">
                       Añadir a la cesta
                     </h1>
