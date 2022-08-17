@@ -28,6 +28,8 @@ function InventoryPage() {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
+  console.log(products.length);
+
   const productDelete = useSelector((state) => state.productDelete);
   const {
     loading: loadingDelete,
@@ -108,30 +110,30 @@ function InventoryPage() {
       ) : (
         <>
           <section className="grid grid-cols-2 gap-4 mt-4">
+            {products.length === 0 && (
+              <div className="col-span-2">
+                <section className="grid place-items-center h-auto xl:px-0 lg:px-0 md:px:0 px-4 py-24">
+                  <span className="bg-black dark:bg-white p-4 rounded-full mb-4">
+                    <Empty className="fill-white dark:fill-black" />
+                  </span>
+                  <span>
+                    <h1 className="text-black dark:text-white text-2xl font-bold text-center">
+                      No hay productos en tu inventario
+                    </h1>
+                  </span>
+                  <span>
+                    <button
+                      onClick={createProductHandler}
+                      className="text-black dark:text-white text-sm font-bold border-b-2 border-black dark:border-white"
+                    >
+                      Agregar producto!
+                    </button>
+                  </span>
+                </section>
+              </div>
+            )}
             {products.map((product) => (
               <>
-                {products.length === 0 && (
-                  <div className="col-span-2">
-                    <section className="grid place-items-center h-auto xl:px-0 lg:px-0 md:px:0 px-4 py-24">
-                      <span className="bg-black dark:bg-white p-4 rounded-full mb-4">
-                        <Empty className="fill-white dark:fill-black" />
-                      </span>
-                      <span>
-                        <h1 className="text-black dark:text-white text-2xl font-bold text-center">
-                          No hay productos en tu inventario
-                        </h1>
-                      </span>
-                      <span>
-                        <button
-                          onClick={createProductHandler}
-                          className="text-black dark:text-white text-sm font-bold border-b-2 border-black dark:border-white"
-                        >
-                          Agregar producto!
-                        </button>
-                      </span>
-                    </section>
-                  </div>
-                )}
                 <div className="lg:col-span-1 col-span-2 py-2 ">
                   <div className="grid grid-cols-4">
                     <div className="col-span-4 lg:col-span-3 flex flex-row items-center gap-4">

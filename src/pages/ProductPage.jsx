@@ -82,7 +82,7 @@ function ProductPage() {
               <div className="xl:col-span-1 col-span-2 flex flex-col gap-4">
                 <span className="flex flex-col gap-2">
                   <h1 className="text-black dark:text-white text-xl font-bold tracking-widest uppercase">
-                    {product.name}
+                    {product.name} Vol. {product.volume}
                   </h1>
                   <span className="flex flex-row gap-2 items-center">
                     <Tag className="fill-black dark:fill-white" />

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import axios from "axios";
+
 import { useNavigate, useParams } from "react-router-dom";
 
 import Add from "../assets/svg/add";
@@ -9,10 +11,10 @@ import Remove from "../assets/svg/remove";
 import Error from "../components/Error";
 import Loader from "../assets/svg/loader";
 
-// import { Formik, Form, input, ErrorMessage } from "formik";
+import CloudDone from "../assets/svg/cloudDone";
+import CloudUpload from "../assets/svg/cloudUpload";
 
 import {
-  listCategories,
   listProductDetails,
   updateProduct,
 } from "../actions/productActions";
@@ -22,12 +24,12 @@ function ProductEditPage() {
   const [formData, setFormData] = useState(false);
 
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(1);
   const [image, setImage] = useState("");
-  const [brand, setBrand] = useState("");
+  const [volume, setVolume] = useState(1);
   const [category, setCategory] = useState("");
   const [editorial, setEditorial] = useState("");
-  const [countInStock, setCountInStock] = useState(0);
+  const [countInStock, setCountInStock] = useState(1);
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
 
@@ -41,7 +43,22 @@ function ProductEditPage() {
   const productDetails = useSelector((state) => state.productDetails);
   const { error, loading, product } = productDetails;
 
-  console.log(product);
+  // console.log(product);
+
+  const [categories, setCategories] = useState([]);
+  const [editorials, setEditorials] = useState([]);
+
+  const getCategories = async () => {
+    const res = await axios.get("/api/categories");
+    setCategories(res.data);
+  };
+
+  const getEditorials = async () => {
+    const res = await axios.get("/api/editorials");
+    setEditorials(res.data);
+  };
+
+  // console.log(categories);
 
   const productUpdate = useSelector((state) => state.productUpdate);
   const {
@@ -60,7 +77,6 @@ function ProductEditPage() {
   };
 
   const submitHandler = (e) => {
-    console.log("entra");
     e.preventDefault();
     setFormData(true);
     dispatch(
@@ -69,7 +85,7 @@ function ProductEditPage() {
         name,
         price,
         image,
-        brand,
+        volume,
         category,
         editorial,
         countInStock,
@@ -81,6 +97,34 @@ function ProductEditPage() {
     }, 1000);
   };
 
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+
+    formData.append("image", file);
+    formData.append("product_id", params.id);
+
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post(
+        "/api/products/upload/",
+        formData,
+        config
+      );
+
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
+      setUploading(false);
+    }
+  };
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -92,13 +136,15 @@ function ProductEditPage() {
         setName(product.name);
         setPrice(product.price);
         setImage(product.image);
-        setBrand(product.brand);
+        setVolume(product.volume);
         setCategory(product.category);
         setEditorial(product.editorial);
         setCountInStock(product.countInStock);
         setDescription(product.description);
       }
     }
+    getCategories();
+    getEditorials();
   }, [dispatch, navigate, product, params, successUpdate]);
 
   return (
@@ -141,34 +187,46 @@ function ProductEditPage() {
                 <label className="pl-1 text-black dark:text-white text-sm font-bold uppercase tracking-widest">
                   Categoria:
                 </label>
-                <input
-                  type="text"
+                <select
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  placeholder="Categoria"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
-                />
+                >
+                  <option value="" disabled>Seleccione una categoria</option>
+                  {categories.map((category) => (
+                    <option key={category._id} value={category.name}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="col-span-3 lg:col-span-1 flex flex-col gap-2">
                 <label className="pl-1 text-black dark:text-white text-sm font-bold uppercase tracking-widest">
                   Editorial:
                 </label>
-                <input
-                  type="text"
+                <select
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
                   value={editorial}
                   onChange={(e) => setEditorial(e.target.value)}
-                  placeholder="Editorial"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
-                />
+                >
+                  <option value="" disabled>Seleccione una categoria</option>
+                  {editorials.map((editorial) => (
+                    <option key={editorial._id} value={editorial.name}>
+                      {editorial.name}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="col-span-3 lg:col-span-1 flex flex-col gap-2">
                 <label className="pl-1 text-black dark:text-white text-sm font-bold uppercase tracking-widest">
                   Volumen:
                 </label>
                 <input
-                  type="text"
-                  value={brand}
-                  onChange={(e) => setBrand(e.target.value)}
+                  type="number"
+                  value={volume}
+                  min="1"
+                  max="100"
+                  onChange={(e) => setVolume(e.target.value)}
                   placeholder="Nombre del producto"
                   className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
@@ -178,7 +236,7 @@ function ProductEditPage() {
                   Precio:
                 </label>
                 <input
-                  min="0"
+                  min="1"
                   max="100"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
@@ -186,6 +244,11 @@ function ProductEditPage() {
                   placeholder="Precio del producto"
                   className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
+                {price < 1 && (
+                  <p className="text-red-500 text-xs italic">
+                    El precio debe ser mayor a 0
+                  </p>
+                )}
               </div>
               <div className="col-span-3 lg:col-span-1 flex flex-col gap-2">
                 <label className="pl-1 text-black dark:text-white text-sm font-bold uppercase tracking-widest">
@@ -193,6 +256,7 @@ function ProductEditPage() {
                 </label>
                 <span className="flex flex-row h-14 items-center pb-1">
                   <button
+                    type="button"
                     onClick={decrementQty}
                     className="px-2 py-2 rounded-l-sm border-r-1 border-zinc-400 dark:border-zinc-800 p-4 border-2"
                   >
@@ -200,12 +264,13 @@ function ProductEditPage() {
                       <Remove className="fill-zinc-400 dark:fill-zinc-800" />
                     </span>
                   </button>
-                  <button className="px-4 py-2 border-l-0 border-r-0 border-zinc-400 dark:border-zinc-800 p-4 border-2">
+                  <div className="px-4 py-2 border-l-0 border-r-0 border-zinc-400 dark:border-zinc-800 p-4 border-2">
                     <span className="text-zinc-600 dark:text-zinc-500 font-bold">
                       {countInStock}
                     </span>
-                  </button>
+                  </div>
                   <button
+                    type="button"
                     onClick={incremenateQty}
                     className="px-2 py-2 rounded-r-sm border-l-1 border-zinc-400 dark:border-zinc-800 p-4 border-2"
                   >
@@ -227,25 +292,35 @@ function ProductEditPage() {
                 <div className="flex items-center justify-center w-full">
                   <label className="flex flex-col w-full h-32 border-4 border-zinc-200 dark:border-zinc-800 border-dashed hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:border-zinc-300">
                     <div className="flex flex-col items-center justify-center pt-7">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-8 h-8 text-zinc-400 group-hover:text-zinc-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                        />
-                      </svg>
-                      <p className="pt-1 text-sm tracking-wider text-zinc-400 group-hover:text-gray-600">
-                        Subir Imagen
-                      </p>
+                      {uploading ? (
+                        <>
+                          <Loader className="fill-black dark:fill-white" />
+                        </>
+                      ) : (
+                        <>
+                          {image === "Image was uploaded" ? (
+                            <>
+                              <CloudDone className="fill-zinc-400 group-hover:text-zinc-600" />
+                              <p className="pt-1 text-sm tracking-wider text-zinc-400 group-hover:text-gray-600">
+                                Imagen cargada
+                              </p>
+                            </>
+                          ) : (
+                            <>
+                              <CloudUpload className="fill-zinc-400 group-hover:text-zinc-600" />
+                              <p className="pt-1 text-sm tracking-wider text-zinc-400 group-hover:text-gray-600">
+                                Subir Imagen
+                              </p>
+                            </>
+                          )}
+                        </>
+                      )}
                     </div>
-                    <input type="file" className="opacity-0" />
+                    <input
+                      onChange={uploadFileHandler}
+                      type="file"
+                      className="opacity-0"
+                    />
                   </label>
                 </div>
               </div>
