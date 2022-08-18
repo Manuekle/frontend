@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
-
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   const dispatch = useDispatch();
 
@@ -16,12 +14,11 @@ function ProfilePage() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  console.log(userInfo)
-
+  console.log(userInfo);
 
   useEffect(() => {
     if (!userInfo) {
-      navigate("/login");
+      navigate('/login');
     } else {
       setName(userInfo.name);
     }
@@ -42,7 +39,9 @@ function ProfilePage() {
   return (
     <section>
       <div className="flex flex-col">
-        <h1 className="text-black dark:text-white text-3xl font-bold capitalize">Bienvenido {name}</h1>
+        <h1 className="text-black dark:text-white text-3xl font-bold capitalize">
+          Bienvenido {name}
+        </h1>
       </div>
     </section>
   );

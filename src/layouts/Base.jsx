@@ -1,37 +1,37 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Header
-import Header from "../components/Header";
+import Header from '../components/Header';
 
 // Footer
-import Footer from "../components/Footer";
+import Footer from '../components/Footer';
 
-import Back from "../components/Back";
+import Back from '../components/Back';
 
 // Pages
 // auth pages
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
 
 // store page
-import StorePage from "../pages/StorePage";
-import ProductPage from "../pages/ProductPage";
-import CartPage from "../pages/CartPage";
-import ShippingPage from "../pages/ShippingPage";
-import PaymentPage from "../pages/PaymentPage";
-import PlaceOrderPage from "../pages/PlaceOrderPage";
+import StorePage from '../pages/StorePage';
+import ProductPage from '../pages/ProductPage';
+import CartPage from '../pages/CartPage';
+import ShippingPage from '../pages/ShippingPage';
+import PaymentPage from '../pages/PaymentPage';
+import PlaceOrderPage from '../pages/PlaceOrderPage';
 
-import RegisterPage from "../pages/RegisterPage";
-import NotFoundPage from "../pages/NotFoundPage";
+import RegisterPage from '../pages/RegisterPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 // DashboardPage
-import DashboardPage from "./Dashboard";
-import AccountPage from "../pages/AccountPage";
-import OrdersPage from "../pages/OrdersPage";
-import InventoryPage from "../pages/InventoryPage";
-import ProductEditPage from "../pages/ProductEditPage";
+import DashboardPage from './Dashboard';
+import AccountPage from '../pages/AccountPage';
+import OrdersPage from '../pages/OrdersPage';
+import InventoryPage from '../pages/InventoryPage';
+import ProductEditPage from '../pages/ProductEditPage';
 
 function Base() {
   return (

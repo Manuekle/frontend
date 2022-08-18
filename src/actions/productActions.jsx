@@ -1,5 +1,5 @@
 // no-unused-vars
-import axios from "axios";
+import axios from 'axios';
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -21,12 +21,11 @@ import {
   PRODUCT_CREATE_REVIEW_FAIL,
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
-  PRODUCT_TOP_FAIL,
-
-} from "../constants/productConstants";
+  PRODUCT_TOP_FAIL
+} from '../constants/productConstants';
 
 export const listProducts =
-  (keyword = "") =>
+  (keyword = '') =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
@@ -35,7 +34,7 @@ export const listProducts =
 
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
-        payload: data,
+        payload: data
       });
     } catch (error) {
       dispatch({
@@ -43,7 +42,7 @@ export const listProducts =
         payload:
           error.response && error.response.data.detail
             ? error.response.data.detail
-            : error.message,
+            : error.message
       });
     }
   };
@@ -56,7 +55,7 @@ export const listTopProducts = () => async (dispatch) => {
 
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
-      payload: data,
+      payload: data
     });
   } catch (error) {
     dispatch({
@@ -64,7 +63,7 @@ export const listTopProducts = () => async (dispatch) => {
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
-          : error.message,
+          : error.message
     });
   }
 };
@@ -77,7 +76,7 @@ export const listProductDetails = (id) => async (dispatch) => {
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
-      payload: data,
+      payload: data
     });
   } catch (error) {
     dispatch({
@@ -85,7 +84,7 @@ export const listProductDetails = (id) => async (dispatch) => {
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
-          : error.message,
+          : error.message
     });
   }
 };
@@ -93,24 +92,24 @@ export const listProductDetails = (id) => async (dispatch) => {
 export const deleteProduct = (id) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: PRODUCT_DELETE_REQUEST,
+      type: PRODUCT_DELETE_REQUEST
     });
 
     const {
-      userLogin: { userInfo },
+      userLogin: { userInfo }
     } = getState();
 
     const config = {
       headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
     };
 
     const { data } = await axios.delete(`/api/products/delete/${id}/`, config);
 
     dispatch({
-      type: PRODUCT_DELETE_SUCCESS,
+      type: PRODUCT_DELETE_SUCCESS
     });
   } catch (error) {
     dispatch({
@@ -118,7 +117,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
-          : error.message,
+          : error.message
     });
   }
 };
@@ -126,24 +125,24 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 export const createProduct = () => async (dispatch, getState) => {
   try {
     dispatch({
-      type: PRODUCT_CREATE_REQUEST,
+      type: PRODUCT_CREATE_REQUEST
     });
 
     const {
-      userLogin: { userInfo },
+      userLogin: { userInfo }
     } = getState();
 
     const config = {
       headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
     };
 
     const { data } = await axios.post(`/api/products/create/`, {}, config);
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
-      payload: data,
+      payload: data
     });
   } catch (error) {
     dispatch({
@@ -151,7 +150,7 @@ export const createProduct = () => async (dispatch, getState) => {
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
-          : error.message,
+          : error.message
     });
   }
 };
@@ -159,18 +158,18 @@ export const createProduct = () => async (dispatch, getState) => {
 export const updateProduct = (product) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: PRODUCT_UPDATE_REQUEST,
+      type: PRODUCT_UPDATE_REQUEST
     });
 
     const {
-      userLogin: { userInfo },
+      userLogin: { userInfo }
     } = getState();
 
     const config = {
       headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
     };
 
     const { data } = await axios.put(
@@ -180,12 +179,12 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     );
     dispatch({
       type: PRODUCT_UPDATE_SUCCESS,
-      payload: data,
+      payload: data
     });
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
-      payload: data,
+      payload: data
     });
   } catch (error) {
     dispatch({
@@ -193,7 +192,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
-          : error.message,
+          : error.message
     });
   }
 };
@@ -202,18 +201,18 @@ export const createProductReview =
   (productId, review) => async (dispatch, getState) => {
     try {
       dispatch({
-        type: PRODUCT_CREATE_REVIEW_REQUEST,
+        type: PRODUCT_CREATE_REVIEW_REQUEST
       });
 
       const {
-        userLogin: { userInfo },
+        userLogin: { userInfo }
       } = getState();
 
       const config = {
         headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+        }
       };
 
       const { data } = await axios.post(
@@ -223,7 +222,7 @@ export const createProductReview =
       );
       dispatch({
         type: PRODUCT_CREATE_REVIEW_SUCCESS,
-        payload: data,
+        payload: data
       });
     } catch (error) {
       dispatch({
@@ -231,7 +230,7 @@ export const createProductReview =
         payload:
           error.response && error.response.data.detail
             ? error.response.data.detail
-            : error.message,
+            : error.message
       });
     }
   };

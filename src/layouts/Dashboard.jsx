@@ -1,27 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route } from 'react-router-dom';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 // pages
-import AccountPage from "../pages/AccountPage";
-import OrdersPage from "../pages/OrdersPage";
-import InventoryPage from "../pages/InventoryPage";
-import ProductEditPage from "../pages/ProductEditPage";
+import AccountPage from '../pages/AccountPage';
+import OrdersPage from '../pages/OrdersPage';
+import InventoryPage from '../pages/InventoryPage';
+import ProductEditPage from '../pages/ProductEditPage';
 
 // icons
-import Account from "../assets/svg/account";
-import Analytics from "../assets/svg/analytics";
-import Box from "../assets/svg/box";
-import Contact from "../assets/svg/contact";
-import Terms from "../assets/svg/terms";
-import Receipt from "../assets/svg/receipt";
-import ShoppingCart from "../assets/svg/shoppingCart";
-import OpenDoor from "../assets/svg/openDoor";
-import UserSettings from "../assets/svg/userSettings";
+import Account from '../assets/svg/account';
+import Analytics from '../assets/svg/analytics';
+import Box from '../assets/svg/box';
+import Contact from '../assets/svg/contact';
+import Terms from '../assets/svg/terms';
+import Receipt from '../assets/svg/receipt';
+import ShoppingCart from '../assets/svg/shoppingCart';
+import OpenDoor from '../assets/svg/openDoor';
+import UserSettings from '../assets/svg/userSettings';
 
 function Dashboard() {
   let navigate = useNavigate();
@@ -31,12 +31,12 @@ function Dashboard() {
 
   useEffect(() => {
     if (!userInfo) {
-      navigate("/account/login");
+      navigate('/account/login');
     }
   }, [navigate, userInfo]);
 
   return (
-    <>      
+    <>
       <section className="container mx-auto my-10 lg:px-0 pb-12">
         <div className="grid grid-cols-8 gap-8">
           <div className="lg:h-[415px] rounded-md col-span-8 lg:col-span-2 border-2 border-black dark:border-white p-4">
