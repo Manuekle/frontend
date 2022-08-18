@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { addToCart } from "../actions/cartActions";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Loader from "../assets/svg/loader";
 import ShippingCar from "../assets/svg/shippingCar";
@@ -25,7 +25,10 @@ function CartPage() {
 
   const dispatch = useDispatch();
 
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   const cart = useSelector((state) => state.cart);
   const { loading, error, cartItems } = cart;
@@ -36,6 +39,14 @@ function CartPage() {
       dispatch(addToCart(params.id, qty));
     }
   }, [dispatch, params.id, qty]);
+
+  const checkoutHandler = () => {
+    if (userInfo) {
+      navigate("/shipping");
+    } else {
+      navigate("/account/login");
+    }
+  };
 
   return (
     <>
@@ -117,18 +128,35 @@ function CartPage() {
                 </span>
                 <hr />
                 <span>
-                  <h1 className="font-semibold text-md capitalize text-black dark:text-white">
-                    Total a pagar: $
-                    {cartItems
-                      .reduce((acc, item) => acc + item.qty * item.price, 0)
-                      .toFixed(2)}
+                  <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
+                    Total:
+                    <span>
+                      $
+                      {cartItems
+                        .reduce((acc, item) => acc + item.qty * item.price, 0)
+                        .toFixed(2)}
+                    </span>
                   </h1>
                 </span>
-                <button className="py-4 px-8 bg-black dark:bg-white rounded-md w-full mt-2">
-                  <h1 className="text-sm font-bold text-white dark:text-black tracking-widest uppercase">
-                    Comprar ahora
-                  </h1>
-                </button>
+                {cartItems.length === 0 ? (
+                  <button
+                    disabled
+                    className="py-4 px-8 bg-zinc-300 dark:bg-zinc-800 rounded-md w-full mt-2"
+                  >
+                    <h1 className="text-sm font-bold text-black dark:text-white tracking-widest uppercase">
+                      Comprar ahora
+                    </h1>
+                  </button>
+                ) : (
+                  <button
+                    onClick={checkoutHandler}
+                    className="py-4 px-8 bg-black dark:bg-white rounded-md w-full mt-2"
+                  >
+                    <h1 className="text-sm font-bold text-white dark:text-black tracking-widest uppercase">
+                      Comprar ahora
+                    </h1>
+                  </button>
+                )}
                 <span className="flex justify-center text-center">
                   <Link
                     to="/store"

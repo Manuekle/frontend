@@ -19,6 +19,9 @@ import LoginPage from "../pages/LoginPage";
 import StorePage from "../pages/StorePage";
 import ProductPage from "../pages/ProductPage";
 import CartPage from "../pages/CartPage";
+import ShippingPage from "../pages/ShippingPage";
+import PaymentPage from "../pages/PaymentPage";
+import PlaceOrderPage from "../pages/PlaceOrderPage";
 
 import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -48,6 +51,12 @@ function Base() {
           <Route path="/store" element={<StorePage />} />
           {/* cart */}
           <Route path="/cart/:id" element={<CartPage />} />
+          {/* shipping */}
+          <Route path="/shipping" element={<ShippingPage />} />
+          {/* payment */}
+          <Route path="/payment" element={<PaymentPage />} />
+          {/* place order */}
+          <Route path="/placeorder" element={<PlaceOrderPage />} />
           {/* product */}
           <Route path="/product/:id" element={<ProductPage />} />
           {/* dahboard */}
