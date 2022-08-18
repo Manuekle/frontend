@@ -1,8 +1,11 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/button-has-type */
+import React from 'react';
 
 // Icons
-import Search from "../assets/svg/search";
-import Close from "../assets/svg/close";
+import Search from '../assets/svg/search';
+import Close from '../assets/svg/close';
 
 function Searcher(props) {
   return (
@@ -16,19 +19,22 @@ function Searcher(props) {
                   <Search color="black" />
                 </span>
                 <span>
-                <h1 className="text-md font-normal">¿Que buscas?</h1>
-                  
+                  <h1 className="text-md font-normal">¿Que buscas?</h1>
                 </span>
               </div>
               <div className="col-span-1 flex justify-end items-center pt-2">
                 <span>
-                  <button type="button" className="relative" onClick={props.onClick}>
+                  <button
+                    type="button"
+                    className="relative"
+                    onClick={props.onClick}
+                  >
                     <Close fill="black" />
                   </button>
                 </span>
               </div>
             </div>
-            <hr />
+            <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
             {/* Empty */}
             <section className="mt-80 flex items-center justify-center">
               <div className="flex flex-col gap-8">

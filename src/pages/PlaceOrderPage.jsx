@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/jsx-no-useless-fragment */
+import React, { useState, useEffect } from 'react';
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
-import StepsCheckout from "../components/StepsCheckout";
-import { createOrder } from "../actions/orderActions";
-import { ORDER_CREATE_RESET } from "../constants/orderConstants";
+import StepsCheckout from '../components/StepsCheckout';
+import { createOrder } from '../actions/orderActions';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 
+import Loader from '../assets/svg/loader';
 
-import Loader from "../assets/svg/loader";
-
-import Error from "../components/Error";
+import Error from '../components/Error';
 
 function PlaceOrderPage() {
   const orderCreate = useSelector((state) => state.orderCreate);
   const { loading, order, error, success } = orderCreate;
   const dispatch = useDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -35,7 +39,7 @@ function PlaceOrderPage() {
   ).toFixed(2);
 
   if (!cart.paymentMethod) {
-    navigate("/payment");
+    navigate('/payment');
   }
 
   useEffect(() => {
@@ -54,7 +58,7 @@ function PlaceOrderPage() {
         itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
-        totalPrice: cart.totalPrice,
+        totalPrice: cart.totalPrice
       })
     );
   };
@@ -75,79 +79,75 @@ function PlaceOrderPage() {
       ) : (
         <section className="container mx-auto px-4 xl:px-24 my-8 lg:mb-64 mb-8">
           <div className="grid grid-cols-4 gap-4">
-            <div className="lg:col-span-3 col-span-4 border-2 rounded-lg border-zinc-200 dark:border-white">
+            <div className="lg:col-span-3 col-span-4 rounded-lg bg-light-200 dark:bg-dark-200">
               <div className="pt-5">
                 <StepsCheckout step1 step2 step3 step4 />
               </div>
-              <div className="m-8 border-2 border-zinc-200 dark:border-white p-8 xl:mb-28 xl:mt-8 mt-8 mb-12 rounded-lg">
+              <div className="m-8 border-2 border-zinc-200 dark:border-zinc-800 p-8 xl:mb-28 xl:mt-8 mt-8 mb-12 rounded-lg">
                 <h1 className="text-black dark:text-white text-3xl font-bold mb-2">
                   Dirección de envío
                 </h1>
                 <section className="pt-2 pb-4 flex flex-col gap-2">
                   <h1 className="font-bold text-sm text-black dark:text-white">
-                    Dirección:{" "}
+                    Dirección:{' '}
                     <span className="font-normal">
-                      {cart.shippingAddress.address} ({" "}
-                      {cart.shippingAddress.city} -{" "}
+                      {cart.shippingAddress.address} ({' '}
+                      {cart.shippingAddress.city} -{' '}
                       {cart.shippingAddress.country})
                     </span>
                   </h1>
                   <h1 className="font-bold text-sm text-black dark:text-white">
-                    Teléfono:{" "}
+                    Teléfono:{' '}
                     <span className="font-normal">
                       {cart.shippingAddress.phone}
                     </span>
                   </h1>
                   <h1 className="font-bold text-sm text-black dark:text-white">
-                    Mensaje:{" "}
+                    Mensaje:{' '}
                     <span className="font-normal">
                       {cart.shippingAddress.message}
                     </span>
                   </h1>
                 </section>
-                <hr />
+                <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
                 <h1 className="text-black dark:text-white text-3xl font-bold mb-2 mt-6">
                   Método de pago
                 </h1>
                 <section className="pt-2 pb-4 flex flex-col gap-2">
                   <h1 className="font-bold text-sm text-black dark:text-white">
-                    Método:{" "}
+                    Método:{' '}
                     <span className="font-normal">{cart.paymentMethod}</span>
                   </h1>
                 </section>
-                <hr />
+                <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
                 <h1 className="text-black dark:text-white text-3xl font-bold mb-2 mt-6">
                   Articulos
                 </h1>
-                {cart.cartItems.length === 0 ? (
-                  <section></section>
-                ) : (
-                  <section></section>
-                )}
-                <hr />
+                {cart.cartItems.length === 0 ? <section /> : <section />}
+                <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
               </div>
             </div>
-            <div className="lg:h-[270px] h-auto lg:col-span-1 col-span-4 border-2 p-7 rounded-lg border-zinc-200 dark:border-white">
+            <div className="lg:h-[270px] h-auto lg:col-span-1 col-span-4 p-7 rounded-lg bg-light-200 dark:bg-dark-200">
               <div className="flex flex-col gap-2">
                 <span>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
                     Total Artículos: <span>${cart.itemsPrice}</span>
                   </h1>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
-                    Gastos de envío:{" "}
+                    Gastos de envío:{' '}
                     <span className="text-red-500">
                       + ${cart.shippingPrice}
                     </span>
                   </h1>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
-                    TAX:{" "}
+                    TAX:{' '}
                     <span className="text-red-500">+ ${cart.taxPrice}</span>
                   </h1>
                 </span>
-                <hr />
+                <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
                 <span>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
-                    Total:{" "}
+                    Total:{' '}
                     <span className="text-green-500">${cart.totalPrice}</span>
                   </h1>
                 </span>

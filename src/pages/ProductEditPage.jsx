@@ -1,36 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-shadow */
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import axios from "axios";
+import axios from 'axios';
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from 'react-router-dom';
 
-import Add from "../assets/svg/add";
-import Remove from "../assets/svg/remove";
+import Add from '../assets/svg/add';
+import Remove from '../assets/svg/remove';
 
-import Error from "../components/Error";
-import Loader from "../assets/svg/loader";
+import Error from '../components/Error';
+import Loader from '../assets/svg/loader';
 
-import CloudDone from "../assets/svg/cloudDone";
-import CloudUpload from "../assets/svg/cloudUpload";
+import CloudDone from '../assets/svg/cloudDone';
+import CloudUpload from '../assets/svg/cloudUpload';
 
-import {
-  listProductDetails,
-  updateProduct,
-} from "../actions/productActions";
-import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
+import { listProductDetails, updateProduct } from '../actions/productActions';
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 
 function ProductEditPage() {
   const [formData, setFormData] = useState(false);
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [price, setPrice] = useState(1);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
   const [volume, setVolume] = useState(1);
-  const [category, setCategory] = useState("");
-  const [editorial, setEditorial] = useState("");
+  const [category, setCategory] = useState('');
+  const [editorial, setEditorial] = useState('');
   const [countInStock, setCountInStock] = useState(1);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
 
   const dispatch = useDispatch();
@@ -49,12 +51,12 @@ function ProductEditPage() {
   const [editorials, setEditorials] = useState([]);
 
   const getCategories = async () => {
-    const res = await axios.get("/api/categories");
+    const res = await axios.get('/api/categories');
     setCategories(res.data);
   };
 
   const getEditorials = async () => {
-    const res = await axios.get("/api/editorials");
+    const res = await axios.get('/api/editorials');
     setEditorials(res.data);
   };
 
@@ -62,9 +64,9 @@ function ProductEditPage() {
 
   const productUpdate = useSelector((state) => state.productUpdate);
   const {
-    error: errorUpdate,
-    loading: loadingUpdate,
-    success: successUpdate,
+    // error: errorUpdate,
+    // loading: loadingUpdate,
+    success: successUpdate
   } = productUpdate;
 
   const incremenateQty = () => {
@@ -89,7 +91,7 @@ function ProductEditPage() {
         category,
         editorial,
         countInStock,
-        description,
+        description
       })
     );
     setTimeout(() => {
@@ -101,20 +103,20 @@ function ProductEditPage() {
     const file = e.target.files[0];
     const formData = new FormData();
 
-    formData.append("image", file);
-    formData.append("product_id", params.id);
+    formData.append('image', file);
+    formData.append('product_id', params.id);
 
     setUploading(true);
 
     try {
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data",
-        },
+          'Content-Type': 'multipart/form-data'
+        }
       };
 
       const { data } = await axios.post(
-        "/api/products/upload/",
+        '/api/products/upload/',
         formData,
         config
       );
@@ -128,20 +130,18 @@ function ProductEditPage() {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
-      navigate("/dashboard/inventory");
+      navigate('/dashboard/inventory');
+    } else if (!product.name || product._id !== Number(params.id)) {
+      dispatch(listProductDetails(params.id));
     } else {
-      if (!product.name || product._id !== Number(params.id)) {
-        dispatch(listProductDetails(params.id));
-      } else {
-        setName(product.name);
-        setPrice(product.price);
-        setImage(product.image);
-        setVolume(product.volume);
-        setCategory(product.category);
-        setEditorial(product.editorial);
-        setCountInStock(product.countInStock);
-        setDescription(product.description);
-      }
+      setName(product.name);
+      setPrice(product.price);
+      setImage(product.image);
+      setVolume(product.volume);
+      setCategory(product.category);
+      setEditorial(product.editorial);
+      setCountInStock(product.countInStock);
+      setDescription(product.description);
     }
     getCategories();
     getEditorials();
@@ -168,7 +168,7 @@ function ProductEditPage() {
           <Error />
         </div>
       ) : (
-        <section className="border-2 border-black dark:border-white p-4 mt-4 rounded-md">
+        <section className="p-4 mt-4 rounded-md">
           <div>
             <form onSubmit={submitHandler} className="grid grid-cols-3 gap-8">
               <div className="col-span-3 lg:col-span-1 flex flex-col gap-2">
@@ -192,7 +192,9 @@ function ProductEditPage() {
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
-                  <option value="" disabled>Seleccione una categoria</option>
+                  <option value="" disabled>
+                    Seleccione una categoria
+                  </option>
                   {categories.map((category) => (
                     <option key={category._id} value={category.name}>
                       {category.name}
@@ -209,7 +211,9 @@ function ProductEditPage() {
                   value={editorial}
                   onChange={(e) => setEditorial(e.target.value)}
                 >
-                  <option value="" disabled>Seleccione una categoria</option>
+                  <option value="" disabled>
+                    Seleccione una categoria
+                  </option>
                   {editorials.map((editorial) => (
                     <option key={editorial._id} value={editorial.name}>
                       {editorial.name}
@@ -293,12 +297,10 @@ function ProductEditPage() {
                   <label className="flex flex-col w-full h-32 border-4 border-zinc-200 dark:border-zinc-800 border-dashed hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:border-zinc-300">
                     <div className="flex flex-col items-center justify-center pt-7">
                       {uploading ? (
-                        <>
-                          <Loader className="fill-black dark:fill-white" />
-                        </>
+                        <Loader className="fill-black dark:fill-white" />
                       ) : (
                         <>
-                          {image === "Image was uploaded" ? (
+                          {image === 'Image was uploaded' ? (
                             <>
                               <CloudDone className="fill-zinc-400 group-hover:text-zinc-600" />
                               <p className="pt-1 text-sm tracking-wider text-zinc-400 group-hover:text-gray-600">
@@ -330,7 +332,7 @@ function ProductEditPage() {
                 </label>
                 <textarea
                   style={{
-                    resize: "none",
+                    resize: 'none'
                   }}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}

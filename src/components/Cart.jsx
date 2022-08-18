@@ -1,8 +1,11 @@
-import React from "react";
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
 
 // Icons
-import Bag from "../assets/svg/bag";
-import Close from "../assets/svg/close";
+import Bag from '../assets/svg/bag';
+import Close from '../assets/svg/close';
 
 function Cart(props) {
   return (
@@ -22,13 +25,17 @@ function Cart(props) {
               </div>
               <div className="col-span-1 flex justify-end items-center pt-2">
                 <span>
-                  <button type="button" className="relative" onClick={props.onClick}>
+                  <button
+                    type="button"
+                    className="relative"
+                    onClick={props.onClick}
+                  >
                     <Close fill="black" />
                   </button>
                 </span>
               </div>
             </div>
-            <hr />
+            <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
             {/* Empty */}
             <section className="mt-80 flex items-center justify-center">
               <div className="flex flex-col gap-8">

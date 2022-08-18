@@ -35,7 +35,7 @@ import ProductEditPage from '../pages/ProductEditPage';
 
 function Base() {
   return (
-    <main className="bg-white dark:bg-black">
+    <main className="bg-light-100 dark:bg-dark-100">
       <Router>
         <Header />
         <div className="container mx-auto lg:px-0 px-4 pt-8 lg:pt-10">

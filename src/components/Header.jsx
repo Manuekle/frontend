@@ -1,25 +1,27 @@
-import React from "react";
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/button-has-type */
+import React from 'react';
 
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { AnimatePresence, motion, useCycle } from "framer-motion";
+import { AnimatePresence, motion, useCycle } from 'framer-motion';
 
-import { logout } from "../actions/userActions";
+import { logout } from '../actions/userActions';
 
 // ? icons
-import User from "../assets/svg/user";
-import Bag from "../assets/svg/bag";
-import Email from "../assets/svg/email";
-import Search from "../assets/svg/search";
-import Logout from "../assets/svg/logout";
-import Place from "../assets/svg/place";
-import Menu from "../assets/svg/menu";
+import User from '../assets/svg/user';
+import Bag from '../assets/svg/bag';
+import Email from '../assets/svg/email';
+import Search from '../assets/svg/search';
+import Logout from '../assets/svg/logout';
+import Place from '../assets/svg/place';
+import Menu from '../assets/svg/menu';
 
 // DarkMode
-import DarkMode from "./DarkModeSwitch";
-import Cart from "./Cart";
-import Searcher from "./Searcher";
+import DarkMode from './DarkModeSwitch';
+import Cart from './Cart';
+import Searcher from './Searcher';
 
 function Header() {
   const [open, cycleOpen] = useCycle(false, true);
@@ -34,12 +36,12 @@ function Header() {
 
   const dispatch = useDispatch();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     dispatch(logout());
     if (userInfo) {
-      navigate("/account/login");
+      navigate('/account/login');
     }
   };
 
@@ -48,7 +50,7 @@ function Header() {
   return (
     <>
       {/* Desktop */}
-      <header className="dark:bg-black bg-white py-4 hidden lg:block border-b-2 dark:border-b-white border-b-black">
+      <header className="dark:bg-dark-100 bg-light-100 py-4 hidden lg:block b">
         <section className="container mx-auto grid grid-cols-6 gap-62 py-2">
           <div className="col-span-2 flex flex-row gap-3 justify-start items-center">
             {/* <div className="">
@@ -60,15 +62,15 @@ function Header() {
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-center items-center">
             <div className="dark:text-white text-black font-semibold">
-              <Link to="/store" style={{ fontSize: "14px" }}>
+              <Link to="/store" style={{ fontSize: '14px' }}>
                 Tienda
               </Link>
             </div>
             <div className="dark:text-white text-black font-semibold">
-              <h1 style={{ fontSize: "14px" }}>Categorias</h1>
+              <h1 style={{ fontSize: '14px' }}>Categorias</h1>
             </div>
             <div className="dark:text-white text-black font-semibold">
-              <h1 style={{ fontSize: "14px" }}>Nosotros</h1>
+              <h1 style={{ fontSize: '14px' }}>Nosotros</h1>
             </div>
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-end items-center">
@@ -78,7 +80,7 @@ function Header() {
                 type="button"
                 onClick={cycleOpenSearcher}
               >
-                <Search className="dark:text-white text-black" />{" "}
+                <Search className="dark:text-white text-black" />{' '}
               </button>
             </span>
             <span className="">
@@ -86,26 +88,26 @@ function Header() {
             </span>
             <span className="">
               <a href="/">
-                <Email className="dark:fill-white fill-black" />{" "}
+                <Email className="dark:fill-white fill-black" />{' '}
               </a>
             </span>
             {userInfo ? (
               <>
                 <span className="pt-1">
                   <button onClick={logoutHandler}>
-                    <Logout className="dark:fill-white fill-black" />{" "}
+                    <Logout className="dark:fill-white fill-black" />{' '}
                   </button>
                 </span>
                 <span className="">
                   <Link to="/dashboard">
-                    <Place className="dark:fill-white fill-black" />{" "}
+                    <Place className="dark:fill-white fill-black" />{' '}
                   </Link>
                 </span>
               </>
             ) : (
               <span className="">
                 <Link to="/account/login">
-                  <User className="dark:fill-white fill-black" />{" "}
+                  <User className="dark:fill-white fill-black" />{' '}
                 </Link>
               </span>
             )}
@@ -119,7 +121,7 @@ function Header() {
                 <Bag className="dark:fill-white fill-black" />
               </button>
               <h1
-                style={{ fontSize: "10px" }}
+                style={{ fontSize: '10px' }}
                 className="rounded-full bg-black dark:bg-white text-white dark:text-black flex font-bold justify-center absolute px-1.5 py-0.5 top-0 left-3.5"
               >
                 {cartItems.reduce((acc, item) => acc + item.qty, 0)}
@@ -134,7 +136,7 @@ function Header() {
           <div className="col-span-1 flex flex-row gap-2 justify-start items-center pl-4">
             <span className="flex justify-start items-center">
               <a href="/">
-                <Menu className="dark:fill-white fill-black" />{" "}
+                <Menu className="dark:fill-white fill-black" />{' '}
               </a>
             </span>
             <span className="flex justify-start items-center">
@@ -143,7 +145,7 @@ function Header() {
                 type="button"
                 onClick={cycleOpenSearcher}
               >
-                <Search className="dark:text-white text-black" />{" "}
+                <Search className="dark:text-white text-black" />{' '}
               </button>
             </span>
           </div>
@@ -167,7 +169,7 @@ function Header() {
                 <Bag className="dark:fill-white fill-black" />
               </button>
               <h1
-                style={{ fontSize: "10px" }}
+                style={{ fontSize: '10px' }}
                 className="rounded-full bg-black dark:bg-white text-white dark:text-black flex font-bold justify-center absolute px-1.5 py-0.5 top-0 left-3.5"
               >
                 {cartItems.reduce((acc, item) => acc + item.qty, 0)}
@@ -176,8 +178,7 @@ function Header() {
           </div>
         </section>
       </header>
-      <>
-        {/* <AnimatePresence>
+      {/* <AnimatePresence>
           {searcher && (
             <motion.div
               initial={{ y: "-2vh", opacity: 1 }}
@@ -196,41 +197,36 @@ function Header() {
             </motion.div>
           )}
         </AnimatePresence> */}
-      </>
-      <>
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ x: "100vh", opacity: 1, zIndex: 0 }}
-              animate={{ x: "0vh" }}
-              exit={{ x: "100vh", opacity: 1, zIndex: 0 }}
-              transition={{ duration: 0.5 }}
-              className="fixed top-0 left-0 right-0 bottom-0"
-            >
-              <>
-                <Cart onClick={cycleOpen} />
-              </>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </>
-      <>
-        <AnimatePresence>
-          {searcher && (
-            <motion.div
-              initial={{ x: "100vh", opacity: 1, zIndex: 0 }}
-              animate={{ x: "0vh" }}
-              exit={{ x: "100vh", opacity: 1, zIndex: 0 }}
-              transition={{ duration: 0.5 }}
-              className="fixed top-0 left-0 right-0 bottom-0"
-            >
-              <>
-                <Searcher onClick={cycleOpenSearcher} />
-              </>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            animate={{ x: '0vh' }}
+            exit={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-0 left-0 right-0 bottom-0"
+          >
+            <>
+              <Cart onClick={cycleOpen} />
+            </>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {searcher && (
+          <motion.div
+            initial={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            animate={{ x: '0vh' }}
+            exit={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-0 left-0 right-0 bottom-0"
+          >
+            <>
+              <Searcher onClick={cycleOpenSearcher} />
+            </>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

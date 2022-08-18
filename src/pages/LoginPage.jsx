@@ -1,35 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+/* eslint-disable no-shadow */
+/* eslint-disable prefer-const */
+/* eslint-disable react/no-unstable-nested-components */
+import React, { useState, useEffect } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 
-import { login } from "../actions/userActions";
+import { login } from '../actions/userActions';
 
-import Email from "../assets/svg/email";
-import Password from "../assets/svg/password";
-import Loader from "../assets/svg/loader";
+import Email from '../assets/svg/email';
+import Password from '../assets/svg/password';
+import Loader from '../assets/svg/loader';
 
 function LoginPage() {
   const [formData, setFormData] = useState(false);
 
   const dispatch = useDispatch();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { error, userInfo } = userLogin;
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/");
+      navigate('/');
     }
   }, [userInfo, navigate]);
 
   return (
     <section className="grid place-items-center h-auto xl:px-0 lg:px-0 md:px:0 px-4">
-      <div className="border-2 border-black dark:border-white p-8 xl:mb-28 xl:mt-28 mt-12 mb-12 rounded-lg shadow-lg">
+      <div className="bg-light-200 dark:bg-dark-200 p-8 xl:mb-28 xl:mt-12 mt-12 mb-12 rounded-lg shadow-lg">
         <div className="grid grid-cols-1 gap-4">
           <span>
             <h1 className="text-black dark:text-white text-xl font-bold text-center tracking-widest uppercase">
@@ -49,29 +52,29 @@ function LoginPage() {
           {/* init form */}
           <Formik
             initialValues={{
-              username: "",
-              password: "",
+              username: '',
+              password: ''
             }}
             validate={(res) => {
               let error = {};
 
               // Validacion Email
               if (!res.username) {
-                error.username = "Por favor, introduzca un correo electrónico";
+                error.username = 'Por favor, introduzca un correo electrónico';
               } else if (
                 !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
                   res.username
                 )
               ) {
                 error.username =
-                  "El correo electrónico solo puede contener letras, números, guiones, puntos y un signo en el momento";
+                  'El correo electrónico solo puede contener letras, números, guiones, puntos y un signo en el momento';
               }
               // Validacion Contraseña
               if (!res.password) {
-                error.password = "Introduzca una contraseña";
+                error.password = 'Introduzca una contraseña';
               } else if (res.password.length < 6) {
                 error.password =
-                  "La contraseña debe tener al menos 6 caracteres";
+                  'La contraseña debe tener al menos 6 caracteres';
               }
               return error;
             }}
@@ -151,7 +154,7 @@ function LoginPage() {
           {/* end form */}
           <span className="pt-8">
             <p className="text-black dark:text-white text-sm font-normal text-center tracking-wide">
-              ¿No tienes cuenta?{" "}
+              ¿No tienes cuenta?{' '}
               <Link
                 to="/account/register"
                 className="font-bold text-black dark:text-white text-sm"
