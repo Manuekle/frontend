@@ -1,21 +1,25 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { listProducts } from "../actions/productActions";
+import { AnimatePresence, motion, useCycle } from 'framer-motion';
+import { listProducts } from '../actions/productActions';
 
 // import { Link } from "react-router-dom";
 // Components
-import Card from "../components/Card";
-import Categories from "../components/Categories";
-import Editorials from "../components/Editorials";
-import Error from "../components/Error";
+import Card from '../components/Card';
+import Categories from '../components/Categories';
+import Editorials from '../components/Editorials';
+import Error from '../components/Error';
 
-import Loader from "../assets/svg/loader";
+import Loader from '../assets/svg/loader';
 
-import Add from "../assets/svg/add";
-import Remove from "../assets/svg/remove";
-
-import { AnimatePresence, motion, useCycle } from "framer-motion";
+import Add from '../assets/svg/add';
+import Remove from '../assets/svg/remove';
 
 function StoragePage() {
   const [openCategories, cycleOpenCategories] = useCycle(false, true);
@@ -50,14 +54,14 @@ function StoragePage() {
               <AnimatePresence initial={false}>
                 {/* categorías */}
                 <div className="border-b-2 border-t-2 border-black dark:border-white">
-                  <section class="flex justify-between px-4 lg:px-0 py-4 ">
+                  <section className="flex justify-between px-4 lg:px-0 py-4 ">
                     <div>
-                      {" "}
+                      {' '}
                       <h1 className="text-black dark:text-white text-xl font-bold tracking-widest uppercase">
                         categorías
                       </h1>
                     </div>
-                    <div class="order-last ">
+                    <div className="order-last ">
                       <button type="button" onClick={cycleOpenCategories}>
                         <motion.div layout>
                           <motion.div whileTap={{ rotate: 180 }}>
@@ -78,11 +82,11 @@ function StoragePage() {
                       animate="open"
                       exit="collapsed"
                       variants={{
-                        open: { opacity: 1, height: "auto" },
+                        open: { opacity: 1, height: 'auto' },
                         collapsed: {
                           opacity: 0,
-                          height: "auto",
-                        },
+                          height: 'auto'
+                        }
                       }}
                     >
                       <Categories />
@@ -91,9 +95,9 @@ function StoragePage() {
                 </div>
                 {/* editoriales */}
                 <div className="border-b-2 border-black dark:border-white">
-                  <section class="flex justify-between px-4 lg:px-0 py-4 ">
+                  <section className="flex justify-between px-4 lg:px-0 py-4 ">
                     <div>
-                      {" "}
+                      {' '}
                       <h1 className="text-black dark:text-white text-xl font-bold tracking-widest uppercase">
                         Editoriales
                       </h1>
@@ -119,11 +123,11 @@ function StoragePage() {
                       animate="open"
                       exit="collapsed"
                       variants={{
-                        open: { opacity: 1, height: "auto" },
+                        open: { opacity: 1, height: 'auto' },
                         collapsed: {
                           opacity: 0,
-                          height: "auto",
-                        },
+                          height: 'auto'
+                        }
                       }}
                     >
                       <Editorials />

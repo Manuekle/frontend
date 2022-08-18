@@ -1,25 +1,33 @@
-import React from "react";
-import { motion } from "framer-motion";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
+import { motion } from 'framer-motion';
+
 function Modal({ handleClose, children }) {
   const fallDown = {
     hidden: {
-      y: "-100vh",
-      opacity: 0,
+      y: '-100vh',
+      opacity: 0
     },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.1,
-        type: "spring",
+        type: 'spring',
         damping: 20,
-        stiffness: 300,
-      },
+        stiffness: 300
+      }
     },
     exit: {
-      y: "100vh",
-      opacity: 0,
-    },
+      y: '100vh',
+      opacity: 0
+    }
   };
   return (
     <>
@@ -40,7 +48,6 @@ function Modal({ handleClose, children }) {
             exit="exit"
           >
             {children}s
-
             <motion.button
               className="modal-button gradient"
               type="button"

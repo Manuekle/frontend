@@ -1,3 +1,7 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable no-unused-vars */
+// no-unused-vars
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 import {
   USER_LOGIN_REQUEST,

@@ -1,13 +1,20 @@
-import React from "react";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import UserShipping from "../assets/svg/userShipping";
-import Locate from "../assets/svg/locate";
-import Coin from "../assets/svg/coin";
-import Card from "../assets/svg/card";
-import Bill from "../assets/svg/bill";
-import ShippingTime from "../assets/svg/shippingTime";
+import UserShipping from '../assets/svg/userShipping';
+import Locate from '../assets/svg/locate';
+import Coin from '../assets/svg/coin';
+import Card from '../assets/svg/card';
+import Bill from '../assets/svg/bill';
+import ShippingTime from '../assets/svg/shippingTime';
 
 function StepsCheckout({ step1, step2, step3, step4 }) {
   return (

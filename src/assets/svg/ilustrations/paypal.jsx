@@ -1,13 +1,14 @@
-import * as React from "react";
+/* eslint-disable react/jsx-props-no-spreading */
+import * as React from 'react';
 
 function Paypal(props) {
   return (
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 151.37 178.61"      
-      width='80px'
-      height='80px'
+      viewBox="0 0 151.37 178.61"
+      width="80px"
+      height="80px"
       {...props}
     >
       <path
@@ -23,7 +24,6 @@ function Paypal(props) {
         fill="#002f87"
       />
     </svg>
-
   );
 }
 

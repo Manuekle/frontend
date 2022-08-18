@@ -1,3 +1,10 @@
+/* eslint-disable default-param-last */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -22,8 +29,8 @@ import {
   PRODUCT_CREATE_REVIEW_RESET,
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
-  PRODUCT_TOP_FAIL,  
-} from "../constants/productConstants";
+  PRODUCT_TOP_FAIL
+} from '../constants/productConstants';
 
 export const productListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
@@ -35,7 +42,7 @@ export const productListReducer = (state = { products: [] }, action) => {
         loading: false,
         products: action.payload.products,
         page: action.payload.page,
-        pages: action.payload.pages,
+        pages: action.payload.pages
       };
 
     case PRODUCT_LIST_FAIL:

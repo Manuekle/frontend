@@ -1,12 +1,13 @@
-import * as React from "react";
+/* eslint-disable react/jsx-props-no-spreading */
+import * as React from 'react';
 
 function Loader(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       style={{
-        margin: "auto",
-        background: "0 0",
+        margin: 'auto',
+        background: '0 0'
       }}
       width="50px"
       height="50px"

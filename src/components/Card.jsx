@@ -1,15 +1,23 @@
-import React from "react";
-import Cart from "../assets/svg/cart";
-import { AnimatePresence, motion, useCycle } from "framer-motion";
-import Product from "./Product";
-
-import { Link } from "react-router-dom";
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable default-param-last */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import { AnimatePresence, motion, useCycle } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import Cart from '../assets/svg/cart';
+import Product from './Product';
 
 function Card(props) {
   const { product } = props;
 
   const [openProduct, cycleOpenProduct] = useCycle(false, true);
-
 
   return (
     <>
@@ -64,32 +72,28 @@ function Card(props) {
           </div>
         </div>
       </section>
-      <>
-        {/* <AnimatePresence>
+      {/* <AnimatePresence>
           {isModalOpen && (
             <Modal isModalOpen={isModalOpen} handleClose={close}>
               A nice message
             </Modal>
           )}
         </AnimatePresence> */}
-      </>
-      <>
-        <AnimatePresence>
-          {openProduct && (
-            <motion.div
-              initial={{ x: "100vh", opacity: 1, zIndex: 0 }}
-              animate={{ x: "0vh" }}
-              exit={{ x: "100vh", opacity: 1, zIndex: 0 }}
-              transition={{ duration: 0.5 }}
-              className="fixed top-0 left-0 right-0 bottom-0"
-            >
-              <>
-                <Product onClick={cycleOpenProduct} />
-              </>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </>
+      <AnimatePresence>
+        {openProduct && (
+          <motion.div
+            initial={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            animate={{ x: '0vh' }}
+            exit={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-0 left-0 right-0 bottom-0"
+          >
+            <>
+              <Product onClick={cycleOpenProduct} />
+            </>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

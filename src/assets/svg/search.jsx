@@ -1,4 +1,5 @@
-import * as React from "react";
+/* eslint-disable react/jsx-props-no-spreading */
+import * as React from 'react';
 
 function Search(props) {
   return (
@@ -17,7 +18,7 @@ function Search(props) {
     >
       <circle cx={11} cy={11} r={8} />
       <path d="M21 21L16.65 16.65" />
-    </svg>        
+    </svg>
   );
 }
 

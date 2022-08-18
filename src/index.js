@@ -1,11 +1,12 @@
+/* eslint-disable import/order */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Base from './layouts/Base';
-import "./index.css"
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-import { Provider } from "react-redux";
-import store from "./store";
+import { Provider } from 'react-redux';
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

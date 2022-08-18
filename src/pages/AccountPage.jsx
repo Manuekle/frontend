@@ -1,3 +1,7 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +18,7 @@ function ProfilePage() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   useEffect(() => {
     if (!userInfo) {

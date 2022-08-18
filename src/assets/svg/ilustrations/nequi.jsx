@@ -1,4 +1,5 @@
-import * as React from "react";
+/* eslint-disable react/jsx-props-no-spreading */
+import * as React from 'react';
 
 function Nequi(props) {
   return (
@@ -6,8 +7,8 @@ function Nequi(props) {
       data-name="Capa 1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 272.12 266"
-      width='80px'
-      height='80px'
+      width="80px"
+      height="80px"
       {...props}
     >
       <path

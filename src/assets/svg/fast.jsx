@@ -1,4 +1,6 @@
-import * as React from "react";
+/* eslint-disable react/jsx-props-no-spreading */
+
+import * as React from 'react';
 
 function Fast(props) {
   return (

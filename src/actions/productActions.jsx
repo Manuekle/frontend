@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */
 // no-unused-vars
+/* eslint-disable no-underscore-dangle */
+
 import axios from 'axios';
 import {
   PRODUCT_LIST_REQUEST,
