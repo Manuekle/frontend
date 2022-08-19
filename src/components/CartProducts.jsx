@@ -70,19 +70,19 @@ function CartProduct(props) {
           <button
             onClick={decrementQty}
             //   onChange={() => dispatch(addToCart(product.product, qty))}
-            className="px-2 py-2 rounded-l-sm border-r-1 border-black dark:border-white p-4 border"
+            className="px-2 py-2 rounded-l-md border-r-1 p-4 border-2 border-zinc-300 dark:border-zinc-800"
           >
             <span>
               <Remove className="fill-black dark:fill-white" />
             </span>
           </button>
-          <button className="px-4 py-2 border-l-0 border-r-0 border-black dark:border-white p-4 border">
+          <button className="px-4 py-2 p-4 border-2 border-zinc-300 dark:border-zinc-800 border-l-0 border-r-0">
             <span className="text-black dark:text-white">{qty}</span>
           </button>
           <button
             onClick={incremenateQty}
             //   onChange={() => dispatch(addToCart(product.product, qty))}
-            className="px-2 py-2 rounded-r-sm border-l-1 border-black dark:border-white p-4 border"
+            className="px-2 py-2 rounded-r-md p-4 border-2 border-zinc-300 dark:border-zinc-800"
           >
             <span>
               <Add className="fill-black dark:fill-white" />

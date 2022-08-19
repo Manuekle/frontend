@@ -11,6 +11,10 @@ module.exports = {
         },
         light: {
           100: '#EEEEEE'
+        },
+        url: {
+          100: '#C94E4E',
+          200: '#62A388'
         }
       },
       backgroundColor: {

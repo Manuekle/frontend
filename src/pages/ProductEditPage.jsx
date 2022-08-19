@@ -154,7 +154,7 @@ function ProductEditPage() {
           Editar producto
         </h1>
       </section>
-      <hr />
+      <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
       {loading ? (
         <div className="grid place-items-center h-96">
           <Loader
@@ -262,24 +262,24 @@ function ProductEditPage() {
                   <button
                     type="button"
                     onClick={decrementQty}
-                    className="px-2 py-2 rounded-l-sm border-r-1 border-zinc-400 dark:border-zinc-800 p-4 border-2"
+                    className="px-2 py-2 rounded-l-md p-4 border-2 border-zinc-300 dark:border-zinc-800"
                   >
                     <span>
-                      <Remove className="fill-zinc-400 dark:fill-zinc-800" />
+                      <Remove className="fill-black dark:fill-white" />
                     </span>
                   </button>
-                  <div className="px-4 py-2 border-l-0 border-r-0 border-zinc-400 dark:border-zinc-800 p-4 border-2">
-                    <span className="text-zinc-600 dark:text-zinc-500 font-bold">
+                  <div className="px-4 py-2 p-4 border-2 border-zinc-300 dark:border-zinc-800 border-l-0 border-r-0">
+                    <span className="text-black dark:text-white font-bold">
                       {countInStock}
                     </span>
                   </div>
                   <button
                     type="button"
                     onClick={incremenateQty}
-                    className="px-2 py-2 rounded-r-sm border-l-1 border-zinc-400 dark:border-zinc-800 p-4 border-2"
+                    className="px-2 py-2 rounded-r-md p-4 border-2 border-zinc-300 dark:border-zinc-800"
                   >
                     <span>
-                      <Add className="fill-zinc-400 dark:fill-zinc-800" />
+                      <Add className="fill-black dark:fill-white" />
                     </span>
                   </button>
                 </span>

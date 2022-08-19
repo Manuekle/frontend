@@ -61,7 +61,7 @@ function Header() {
             </div>
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-center items-center">
-            <div className="dark:text-white text-black font-semibold">
+            <div className="dark:text-white text-black active:text-url-100 font-semibold">
               <Link to="/store" style={{ fontSize: '14px' }}>
                 Tienda
               </Link>

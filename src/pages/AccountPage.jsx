@@ -11,6 +11,14 @@ import { useNavigate } from 'react-router-dom';
 function ProfilePage() {
   const [name, setName] = useState('');
 
+  const cart = useSelector((state) => state.cart);
+  const { shippingAddress } = cart;
+
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [phone, setPhone] = useState(shippingAddress.phone);
+  const [country, setCountry] = useState(shippingAddress.country);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -41,13 +49,44 @@ function ProfilePage() {
   }, [dispatch, userInfo, navigate]);
 
   return (
-    <section>
-      <div className="flex flex-col">
-        <h1 className="text-black dark:text-white text-3xl font-bold capitalize">
-          Bienvenido {name}
-        </h1>
+    <>
+      <section>
+        <div className="flex flex-col lg:flex-row justify-between mb-4">
+          <h1 className="flex items-center text-black dark:text-white text-md lg:text-3xl font-bold uppercase tracking-widest pb-2 lg:pb-0">
+            Bienvenido {name}
+          </h1>
+        </div>
+      </section>
+      <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
+      <div className="flex flex-col gap-3 mt-4">
+        <span className="flex justify-between items-center px-2 py-4">
+          <h1 className="text-black dark:text-white text-md font-bold">
+            Tus Compras mas recientes
+          </h1>
+          <h1 className="text-black dark:text-white text-xs font-bold">
+            Ver más...
+          </h1>
+        </span>
+
+        <section className="grid grid-cols-5 gap-4">
+          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
+            <span className="flex justify-between items-center px-2 py-4" />
+          </div>
+          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
+            <span className="flex justify-between items-center px-2 py-4" />
+          </div>
+          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
+            <span className="flex justify-between items-center px-2 py-4" />
+          </div>
+          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
+            <span className="flex justify-between items-center px-2 py-4" />
+          </div>
+          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
+            <span className="flex justify-between items-center px-2 py-4" />
+          </div>
+        </section>
       </div>
-    </section>
+    </>
   );
 }
 

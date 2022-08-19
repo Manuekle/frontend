@@ -37,13 +37,13 @@ function Footer() {
             Síguenos en nuestras redes sociales
           </p>
           <div className="flex flex-row pt-4">
-            <span className="rounded-l-lg border-r-2 dark:border-white border-black p-4 border-2">
+            <span className="rounded-l-lg border-2 border-zinc-300 dark:border-zinc-800 p-4 ">
               <Facebook className="dark:fill-white fill-black dark:text-white text-black" />
             </span>
-            <span className="border-l-0 border-r-0 dark:border-white border-black p-4 border-2">
+            <span className="border-l-0 border-r-0 border-2 border-zinc-300 dark:border-zinc-800 p-4">
               <Instagram className="dark:fill-white fill-black dark:text-white text-black" />
             </span>
-            <span className="rounded-r-lg border-l-2 dark:border-white border-black p-4 border-2">
+            <span className="rounded-r-lg border-2 border-zinc-300 dark:border-zinc-800 p-4">
               <Whatsapp className="dark:fill-white fill-black dark:text-white text-black" />
             </span>
           </div>

@@ -18,8 +18,8 @@ import Error from '../components/Error';
 
 import Loader from '../assets/svg/loader';
 
-import Add from '../assets/svg/add';
-import Remove from '../assets/svg/remove';
+import Plus from '../assets/svg/plus';
+import Minus from '../assets/svg/minus';
 
 function StoragePage() {
   const [openCategories, cycleOpenCategories] = useCycle(false, true);
@@ -49,15 +49,15 @@ function StoragePage() {
         </div>
       ) : (
         <section className="container mx-auto py-4 my-20">
-          <div className="grid grid-cols-6 gap-4">
-            <div className="col-span-6 lg:col-span-2 p-2 h-auto w-auto">
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-10 lg:col-span-3 p-2 h-auto w-auto">
               <AnimatePresence initial={false}>
                 {/* categorías */}
-                <div className="border-b-2 border-t-2 border-black dark:border-white">
+                <div className="border-b-2 border-t-2 border-zinc-200 dark:border-zinc-800">
                   <section className="flex justify-between px-4 lg:px-0 py-4 ">
                     <div>
                       {' '}
-                      <h1 className="text-black dark:text-white text-xl font-bold tracking-widest uppercase">
+                      <h1 className="text-black dark:text-white text-md font-bold tracking-widest uppercase">
                         categorías
                       </h1>
                     </div>
@@ -66,9 +66,9 @@ function StoragePage() {
                         <motion.div layout>
                           <motion.div whileTap={{ rotate: 180 }}>
                             {openCategories ? (
-                              <Remove className="dark:fill-white fill-black" />
+                              <Minus className="dark:fill-white fill-black" />
                             ) : (
-                              <Add className="dark:fill-white fill-black" />
+                              <Plus className="dark:fill-white fill-black" />
                             )}
                           </motion.div>
                         </motion.div>
@@ -94,11 +94,11 @@ function StoragePage() {
                   )}
                 </div>
                 {/* editoriales */}
-                <div className="border-b-2 border-black dark:border-white">
+                <div className="border-b-2 border-zinc-200 dark:border-zinc-800">
                   <section className="flex justify-between px-4 lg:px-0 py-4 ">
                     <div>
                       {' '}
-                      <h1 className="text-black dark:text-white text-xl font-bold tracking-widest uppercase">
+                      <h1 className="text-black dark:text-white text-md font-bold tracking-widest uppercase">
                         Editoriales
                       </h1>
                     </div>
@@ -107,9 +107,9 @@ function StoragePage() {
                         <motion.div layout>
                           <motion.div whileTap={{ rotate: 180 }}>
                             {openEditorials ? (
-                              <Remove className="dark:fill-white fill-black" />
+                              <Minus className="dark:fill-white fill-black" />
                             ) : (
-                              <Add className="dark:fill-white fill-black" />
+                              <Plus className="dark:fill-white fill-black" />
                             )}
                           </motion.div>
                         </motion.div>
@@ -136,7 +136,7 @@ function StoragePage() {
                 </div>
               </AnimatePresence>
             </div>
-            <div className="col-span-6 lg:col-span-4 p-2 h-auto w-auto">
+            <div className="col-span-10 lg:col-span-9 p-2 h-auto w-auto">
               <div className="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
                 {products.map((product) => (
                   <Card product={product} />

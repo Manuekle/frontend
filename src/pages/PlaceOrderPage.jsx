@@ -131,30 +131,30 @@ function PlaceOrderPage() {
               <div className="flex flex-col gap-2">
                 <span>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
-                    Total Artículos: <span>${cart.itemsPrice}</span>
+                    Total Artículos:{' '}
+                    <span className="text-[#343434] dark:text-[#EEEEEE]">
+                      ${cart.itemsPrice}
+                    </span>
                   </h1>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
                     Gastos de envío:{' '}
-                    <span className="text-red-500">
+                    <span className="text-url-100">
                       + ${cart.shippingPrice}
                     </span>
                   </h1>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
                     TAX:{' '}
-                    <span className="text-red-500">+ ${cart.taxPrice}</span>
+                    <span className="text-url-100">+ ${cart.taxPrice}</span>
                   </h1>
                 </span>
                 <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
                 <span>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
                     Total:{' '}
-                    <span className="text-green-500">${cart.totalPrice}</span>
+                    <span className="text-url-200">${cart.totalPrice}</span>
                   </h1>
                 </span>
-                <button
-                  disabled
-                  className="py-4 px-8 bg-zinc-300 dark:bg-zinc-800 rounded-md w-full mt-2"
-                >
+                <button className="py-4 px-8 bg-zinc-100 dark:bg-zinc-800 rounded-md w-full mt-2">
                   <h1 className="text-sm font-bold text-black dark:text-white tracking-widest uppercase">
                     Realizar Pedido
                   </h1>

@@ -97,7 +97,7 @@ function InventoryPage() {
           </h1>
         </button>
       </section>
-      <hr />
+      <hr className="border-zinc-200 dark:border-zinc-800 border-1 rounded-full" />
       {loading ? (
         <div className="grid place-items-center h-96 pt-2">
           <Loader
@@ -142,7 +142,7 @@ function InventoryPage() {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="relative rounded-md w-[70px] h-full"
+                      className="relative rounded-md w-24 h-full object-cover"
                     />
                   </Link>
                   <span className="flex flex-col gap-1">

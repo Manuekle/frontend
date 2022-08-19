@@ -137,7 +137,7 @@ function CartPage() {
                 {cartItems.length === 0 ? (
                   <button
                     disabled
-                    className="py-4 px-8 bg-zinc-300 dark:bg-zinc-800 rounded-md w-full mt-2"
+                    className="py-4 px-8 bg-zinc-100 dark:bg-zinc-800 rounded-md w-full mt-2"
                   >
                     <h1 className="text-sm font-bold text-black dark:text-white tracking-widest uppercase">
                       Comprar ahora
@@ -146,9 +146,9 @@ function CartPage() {
                 ) : (
                   <button
                     onClick={checkoutHandler}
-                    className="py-4 px-8 bg-black dark:bg-white rounded-md w-full mt-2"
+                    className="py-4 px-8 bg-zinc-100 dark:bg-zinc-800 rounded-md w-full mt-2"
                   >
-                    <h1 className="text-sm font-bold text-white dark:text-black tracking-widest uppercase">
+                    <h1 className="text-sm font-bold text-black dark:text-white tracking-widest uppercase">
                       Comprar ahora
                     </h1>
                   </button>
