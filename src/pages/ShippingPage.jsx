@@ -68,7 +68,7 @@ function ShippingPage() {
                   value={address || ''}
                   onChange={(e) => setAddress(e.target.value)}
                   placeholder="Eje: Calle 9 de Julio #123"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
               </div>
               <div className="col-span-3 lg:col-span-1 flex flex-col gap-1">
@@ -82,7 +82,7 @@ function ShippingPage() {
                   value={phone || ''}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Eje: 3121234567"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
               </div>
               <div className="col-span-3 lg:col-span-1 flex flex-col gap-1">
@@ -93,7 +93,7 @@ function ShippingPage() {
                   selected={country || ''}
                   value={country || ''}
                   onChange={(e) => setCountry(e.target.value)}
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 >
                   <option disabled value="">
                     Seleccione el país
@@ -109,7 +109,7 @@ function ShippingPage() {
                   selected={city || ''}
                   value={city || ''}
                   onChange={(e) => setCity(e.target.value)}
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 >
                   <option disabled value="">
                     Indique su ciudad
@@ -128,7 +128,7 @@ function ShippingPage() {
                   value={postalCode || ''}
                   onChange={(e) => setPostalCode(e.target.value)}
                   placeholder="Eje: 12345"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
               </div>
               <div className="col-span-3 lg:col-span-3 flex flex-col gap-1">
@@ -143,16 +143,16 @@ function ShippingPage() {
                   value={message || ''}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Eje: Quiero que te contacten"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
               </div>
               <div className="col-span-3 lg:col-span-3 flex flex-col gap-1">
                 <button
                   type="submit"
-                  className="bg-black dark:bg-white w-full rounded-lg"
+                  className="bg-zinc-300 dark:bg-zinc-800 w-full rounded-lg"
                 >
                   {!formData && (
-                    <h1 className="text-white dark:text-black text-md font-bold py-4">
+                    <h1 className="text-black dark:text-white text-md font-bold py-4">
                       Continuar
                     </h1>
                   )}

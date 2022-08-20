@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/button-has-type */
@@ -7,6 +8,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AnimatePresence, motion, useCycle } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { listProducts } from '../actions/productActions';
 
 // import { Link } from "react-router-dom";
@@ -15,6 +17,7 @@ import Card from '../components/Card';
 import Categories from '../components/Categories';
 import Editorials from '../components/Editorials';
 import Error from '../components/Error';
+import Paginate from '../components/Paginate';
 
 import Loader from '../assets/svg/loader';
 
@@ -26,12 +29,16 @@ function StoragePage() {
   const [openEditorials, cycleOpenEditorials] = useCycle(false, true);
 
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  const keyword = location.search;
+
   const productList = useSelector((state) => state.productList);
-  const { error, loading, products } = productList;
+  const { error, loading, products, page, pages } = productList;
 
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(listProducts(keyword));
+  }, [dispatch, keyword]);
 
   return (
     <>
@@ -142,6 +149,7 @@ function StoragePage() {
                   <Card product={product} />
                 ))}
               </div>
+              <Paginate page={page} pages={pages} keyword={keyword} />
             </div>
           </div>
         </section>

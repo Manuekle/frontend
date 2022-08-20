@@ -9,6 +9,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Add from '../assets/svg/add';
 
 import Error from '../components/Error';
+import PaginateInventory from '../components/PaginateInventory';
 
 import Loader from '../assets/svg/loader';
 import Edit from '../assets/svg/edit';
@@ -28,8 +29,10 @@ function InventoryPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const keyword = location.search;
+
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products, page, pages } = productList;
 
   // console.log(products.length);
 
@@ -58,12 +61,13 @@ function InventoryPage() {
     if (successCreate) {
       navigate(`product/${createdProduct._id}/edit`);
     } else {
-      dispatch(listProducts(location.search));
+      dispatch(listProducts(keyword));
     }
   }, [
     dispatch,
     // history,
     // userInfo,\
+    keyword,
     navigate,
     location,
     successDelete,
@@ -173,6 +177,9 @@ function InventoryPage() {
               </div>
             </div>
           ))}
+          <div className="col-span-2">
+            <PaginateInventory page={page} pages={pages} keyword={keyword} />
+          </div>
         </section>
       )}
     </>
