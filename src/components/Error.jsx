@@ -14,7 +14,7 @@ import Server from '../assets/svg/ilustrations/errorServer';
 function Error() {
   return (
     <>
-      <section className="rounded-lg border-2 border-black dark:border-white p-8">
+      <section className="rounded-lg bg-light-200 dark:bg-dark-200 p-8">
         <div className="grid grid-cols-2 lg:gap-1 gap-4">
           <span className="col-span-2 lg:col-span-1 flex flex-col gap-2">
             <h1 className="text-black dark:text-white font-bold text-6xl">
@@ -32,8 +32,8 @@ function Error() {
               Estaremos en funcionamiento en breve.
             </h1>
             <Link to="/">
-              <button className="bg-black dark:bg-white text-white font-bold py-2 px-4 rounded-lg">
-                <h1 className="text-white dark:text-black">
+              <button className="bg-zinc-300 dark:bg-zinc-800 text-white font-bold py-2 px-4 rounded-lg">
+                <h1 className="text-black dark:text-white">
                   Volver a la página principal
                 </h1>
               </button>
@@ -43,7 +43,7 @@ function Error() {
             {/* <h1 className="text-black dark:text-white font-bold text-lg">
               Bueno, esto es inesperado.
             </h1> */}
-            <Server className="fill-black dark:fill-white" />
+            <Server className="w-80 h-80" />
           </span>
         </div>
       </section>

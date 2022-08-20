@@ -26,7 +26,7 @@ function Message() {
           </div>
           <div className="col-span-1 flex justify-end items-center">
             <Link
-              to="/cart"
+              to="/cart/0"
               className="text-white text-sm font-normal border-b hover:border-b-white border-b-gray-300"
             >
               Ver carrito

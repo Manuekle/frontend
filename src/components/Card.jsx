@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
@@ -19,6 +20,10 @@ function Card(props) {
 
   const [openProduct, cycleOpenProduct] = useCycle(false, true);
 
+  const openProductHandler = () => {
+    cycleOpenProduct();
+  };
+
   return (
     <>
       <section>
@@ -28,7 +33,7 @@ function Card(props) {
               <img
                 src={product.image}
                 alt={product.name}
-                className="rounded-t-lg w-full xl:h-96 h-full object-cover"
+                className="rounded-t-lg w-full xl:h-96 h-full object-cover relative"
               />
             </Link>
             <div className="absolute top-2 right-2 flex">
@@ -51,7 +56,7 @@ function Card(props) {
             <div className="grid grid-cols-6">
               <div className="col-span-5">
                 <h1 className="text-black dark:text-white text-sm font-bold uppercase">
-                  {product.name} Vol.{product.volume}
+                  {product.name} Vol. {product.volume}
                 </h1>
                 <h1 className="text-black dark:text-white text-sm font-bold uppercase">
                   $ {product.price}
@@ -60,11 +65,11 @@ function Card(props) {
               <div className="col-span-1 flex items-start justify-center">
                 <button
                   type="button"
-                  onClick={cycleOpenProduct}
-                  className="bg-black p-2 rounded-md"
+                  onClick={openProductHandler}
+                  className="dark:bg-zinc-800 bg-zinc-300 p-2 rounded-md"
                 >
                   <span>
-                    <Cart fill="white" />
+                    <Cart className="fill-black dark:fill-white" />
                   </span>
                 </button>
               </div>
@@ -82,14 +87,14 @@ function Card(props) {
       <AnimatePresence>
         {openProduct && (
           <motion.div
-            initial={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            initial={{ x: '100vh', opacity: 1, zIndex: 1 }}
             animate={{ x: '0vh' }}
-            exit={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            exit={{ x: '100vh', opacity: 1, zIndex: 1 }}
             transition={{ duration: 0.5 }}
             className="fixed top-0 left-0 right-0 bottom-0"
           >
             <>
-              <Product onClick={cycleOpenProduct} />
+              <Product onClick={cycleOpenProduct} product={product} />
             </>
           </motion.div>
         )}

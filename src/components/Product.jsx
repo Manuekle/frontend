@@ -1,9 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-console */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Icons
 import Fast from '../assets/svg/fast';
@@ -13,30 +18,58 @@ import Remove from '../assets/svg/remove';
 
 import Message from './Message';
 
+import { addToCart } from '../actions/cartActions';
+
 function Product(props) {
   const [show, setShow] = useState(false);
+  const [qty, setQty] = useState(1);
 
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const incremenateQty = () => {
+    if (qty < props.product.countInStock) {
+      setQty(qty + 1);
+    }
+  };
+  const decrementQty = () => {
+    if (qty > 1) {
+      setQty(qty - 1);
+    }
+  };
+
+  const goToCart = () => {
+    navigate(`/cart/${props.product._id}?qty=${qty}`);
+  };
+
+  const addToCartHandler = () => {
+    // navigate(`/cart/${params.id}?qty=${qty}`)
+    // navigate(`/cart/${params.id}?qty=${qty}`);
+    dispatch(addToCart(props.product._id, qty));
+  };
   const handleShow = () => {
+    addToCartHandler();
     setShow(true);
 
     setTimeout(() => {
       setShow(false);
     }, 3000);
   };
-  // TODO: Crear una function que me guarde el id del producto y mostarlo en el modal
-  const img =
-    'https://www.logocrea.com/wp-content/uploads/2016/07/fondo-gris.jpg';
+
   return (
-    <section className="absolute bg-white top-0 right-0 flex justify-center h-full border">
+    <section className="absolute bg-white dark:bg-dark-200 top-0 right-0 flex justify-center h-full rounded-l-xl">
       <div className="flex flex-col">
-        <div className="grid grid-cols-2 gap-56 border p-5">
+        <div className="grid grid-cols-2 gap-56 p-5">
           <div className="col-span-1 flex justify-start gap-3 items-center">
             <span>
-              <Fast fill="black" />
+              <Fast className="fill-black dark:fill-white" />
             </span>
             <span>
               {/* <h1 className="text-md font-bold">0 Artículos</h1> */}
-              <h1 className="text-md font-bold">Vista rápida</h1>
+              <h1 className="text-md font-bold text-black dark:text-white">
+                Vista rápida
+              </h1>
             </span>
           </div>
           <div className="col-span-1 flex justify-end items-center pt-2">
@@ -46,7 +79,7 @@ function Product(props) {
                 className="relative"
                 onClick={props.onClick}
               >
-                <Close fill="black" color="black" />
+                <Close className="fill-black dark:fill-white" />
               </button>
             </span>
           </div>
@@ -73,9 +106,9 @@ function Product(props) {
             <section className="w-auto h-auto">
               <div className=" shadow-lg">
                 <img
-                  src={img}
+                  src={props.product.image}
                   alt=""
-                  className="w-28 h-full rounded-lg border-2 border-black"
+                  className="w-28 h-auto rounded-lg"
                 />
               </div>
             </section>
@@ -84,46 +117,64 @@ function Product(props) {
             <div className="grid grid-cols-2 gap-10">
               <div className="col-span-2">
                 <span className="flex items-center">
-                  <h1 className="text-black text-sm font-bold uppercase tracking-widest">
-                    category
+                  <h1 className="text-black dark:text-white text-sm font-bold uppercase tracking-widest">
+                    {props.product.name} Vol. {props.product.volume}
                   </h1>
                 </span>
                 <span className="flex items-center">
-                  <h1 className="text-black text-sm font-normal capitalize">
-                    SAME NAME
+                  <h1 className="text-black dark:text-white text-sm font-bold capitalize">
+                    Editorial {props.product.editorial}
                   </h1>
                 </span>
                 <span className="flex items-center">
-                  <h1 className="text-black text-sm font-normal capitalize">
-                    $ 12.00
+                  <h1 className="text-black dark:text-white text-sm font-bold capitalize">
+                    {props.product.category}
                   </h1>
                 </span>
-              </div>
-              <div className="col-span-2">
                 <span className="flex items-center">
-                  <h1 className="text-black text-sm font-normal capitalize">
-                    Cantidad:
+                  <h1 className="text-black dark:text-white text-sm font-normal capitalize">
+                    $ {props.product.price}
                   </h1>
                 </span>
-                <span className="flex flex-row pt-1">
-                  <button className="px-2 py-2 rounded-l-sm border-r-1 border-black p-4 border">
-                    <span>
-                      <Remove fill="black" />
-                    </span>
-                  </button>
-                  <button className="px-4 py-2 border-l-0 border-r-0 border-black p-4 border">
-                    0
-                  </button>
-                  <button className="px-2 py-2 rounded-r-sm border-l-1 border-black p-4 border">
-                    <span>
-                      <Add fill="black" />
-                    </span>
-                  </button>
-                </span>
+                <div className="pt-4">
+                  <span className="flex items-center">
+                    <h1 className="text-black dark:text-white text-sm font-normal capitalize">
+                      Cantidad:
+                    </h1>
+                  </span>
+                  <span className="flex flex-row pt-1">
+                    <button
+                      onClick={decrementQty}
+                      className="px-2 py-2 rounded-l-md border-r-1 p-4 border-2 border-zinc-300 dark:border-zinc-800"
+                    >
+                      <span>
+                        <Remove className="fill-black dark:fill-white" />
+                      </span>
+                    </button>
+                    <button className="px-4 py-2 border-l-0 border-r-0 border-2 border-zinc-300 dark:border-zinc-800 p-4">
+                      <span className="text-black dark:text-white">{qty}</span>
+                    </button>
+                    <button
+                      onClick={incremenateQty}
+                      className="px-2 py-2 rounded-r-md border-l-1  p-4 border-2 border-zinc-300 dark:border-zinc-800"
+                    >
+                      <span>
+                        <Add className="fill-black dark:fill-white" />
+                      </span>
+                    </button>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-          <div className="mt-36 flex col-span-3 justify-center">
+          <div className="col-span-3">
+            <span>
+              <p className="text-black dark:text-white w-96 text-justify">
+                {props.product.description}
+              </p>
+            </span>
+          </div>
+          <div className="mt-20 flex col-span-3 justify-center">
             <button
               type="button"
               onClick={handleShow}
@@ -135,18 +186,21 @@ function Product(props) {
             </button>
           </div>
           <div className="col-span-3">
-            <button className="py-4 px-8 bg-black rounded-md w-full">
-              <h1 className="text-sm font-bold text-white tracking-widest uppercase">
+            <button
+              onClick={goToCart}
+              className="py-4 px-8 bg-zinc-100 dark:bg-zinc-800 rounded-md w-full"
+            >
+              <h1 className="text-sm font-bold dark:text-white text-black tracking-widest uppercase">
                 Comprar ahora
               </h1>
             </button>
           </div>
           <div className="flex col-span-3 justify-center">
-            <a href="/">
-              <h2 className="text-xs text-zinc-600 hover:text-black font-normal border-b hover:border-b-black border-b-zinc-600">
+            <Link to={`/product/${props.product._id}`}>
+              <h2 className="text-xs font-bold border-b dark:text-zinc-300 dark:hover:text-zinc-200 dark:hover:border-b-zinc-200 dark:border-b-zinc-300 text-black hover:text-zinc-600 hover:border-b-zinc-600 border-b-black">
                 Ver detalles
               </h2>
-            </a>
+            </Link>
           </div>
         </section>
       </div>

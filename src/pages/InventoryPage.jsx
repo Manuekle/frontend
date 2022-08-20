@@ -89,10 +89,10 @@ function InventoryPage() {
         <button
           type="button"
           onClick={createProductHandler}
-          className="order-last flex flex-row gap-2 items-center bg-black dark:bg-white rounded-md py-2 px-4 w-56 lg:w-56"
+          className="order-last flex flex-row gap-2 items-center bg-zinc-300 dark:bg-zinc-800 rounded-md py-2 px-4 w-56 lg:w-56"
         >
-          <Add className="fill-white dark:fill-black" />
-          <h1 className="text-white dark:text-black text-sm lg:text-md font-bold tracking-wide capitalize">
+          <Add className="fill-black dark:fill-white" />
+          <h1 className="text-black dark:text-white text-sm lg:text-md font-bold tracking-wide capitalize">
             Agregar producto
           </h1>
         </button>
@@ -142,7 +142,7 @@ function InventoryPage() {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="relative rounded-md w-24 h-full object-cover"
+                      className="relative rounded-md w-24 h-24 object-cover"
                     />
                   </Link>
                   <span className="flex flex-col gap-1">
@@ -150,10 +150,10 @@ function InventoryPage() {
                       {product.name}
                     </h1>
                     <h1 className="text-black dark:text-white text-xs font-semibold uppercase">
-                      {product.category}
+                      Editorial {product.editorial}
                     </h1>
                     <h1 className="text-black dark:text-white text-xs font-semibold uppercase">
-                      Editorial {product.editorial}
+                      {product.category}
                     </h1>
                     <h1 className="text-black dark:text-white text-xs font-semibold uppercase">
                       Stock: {product.countInStock}

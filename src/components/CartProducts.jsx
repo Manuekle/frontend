@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
@@ -33,6 +34,7 @@ function CartProduct(props) {
 
   useEffect(() => {
     dispatch(addToCart(product.product, qty));
+    console.log(product.product);
   }, [dispatch, qty, product.product]);
 
   const removeFromCartHandler = (id) => {
@@ -50,12 +52,15 @@ function CartProduct(props) {
           <img
             src={product.image}
             alt={product.name}
-            className="relative rounded-md w-[70px] h-full border-2 border-black dark:border-white"
+            className="relative rounded-md w-[70px] h-full"
           />
         </Link>
         <span className="flex flex-col gap-1">
           <h1 className="text-black dark:text-white text-sm font-semibold tracking-wide uppercase">
-            {product.name}
+            {product.name} Vol. {product.volume}
+          </h1>
+          <h1 className="text-black dark:text-white text-xs font-semibold uppercase">
+            EDITORIAL {product.editorial}
           </h1>
           <h1 className="text-black dark:text-white text-xs font-semibold uppercase">
             {product.category}

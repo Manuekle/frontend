@@ -180,7 +180,7 @@ function ProductEditPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Nombre del producto"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
               </div>
               <div className="col-span-3 lg:col-span-1 flex flex-col gap-2">
@@ -188,7 +188,7 @@ function ProductEditPage() {
                   Categoria:
                 </label>
                 <select
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
@@ -207,7 +207,7 @@ function ProductEditPage() {
                   Editorial:
                 </label>
                 <select
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                   value={editorial}
                   onChange={(e) => setEditorial(e.target.value)}
                 >
@@ -232,7 +232,7 @@ function ProductEditPage() {
                   max="100"
                   onChange={(e) => setVolume(e.target.value)}
                   placeholder="Nombre del producto"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
               </div>
               <div className="col-span-3 lg:col-span-1 flex flex-col gap-2">
@@ -246,7 +246,7 @@ function ProductEditPage() {
                   onChange={(e) => setPrice(e.target.value)}
                   type="number"
                   placeholder="Precio del producto"
-                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
                 {price < 1 && (
                   <p className="text-red-500 text-xs italic">
@@ -338,21 +338,21 @@ function ProductEditPage() {
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Descripción del producto"
                   rows="4"
-                  className="decorate-none font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-800 dark:text-white bg-white dark:bg-black border-2 border-zinc-300 dark:border-zinc-800 rounded-md py-3 pl-4 w-full"
+                  className="decorate-none font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-4 w-full"
                 />
               </div>
-              <span className="col-span-3 pt-2 flex justify-center">
+              <span className="col-span-3 grid place-items-center pt-2 justify-center">
                 <button
                   type="submit"
-                  className="bg-black dark:bg-white w-full rounded-lg"
+                  className="bg-zinc-300 dark:bg-zinc-800 w-full rounded-lg px-12"
                 >
                   {!formData && (
-                    <h1 className="text-white dark:text-black text-md font-bold py-4">
+                    <h1 className="text-black dark:text-white text-md font-bold py-4">
                       Actualizar Producto
                     </h1>
                   )}
                   {formData && (
-                    <Loader className="fill-white dark:fill-black" />
+                    <Loader className="fill-black dark:fill-white" />
                   )}
                 </button>
               </span>

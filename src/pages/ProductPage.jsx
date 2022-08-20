@@ -79,12 +79,12 @@ function ProductPage() {
               <img
                 src={product.image}
                 alt={product.name}
-                className="relative rounded-md w-[500px] h-full"
+                className="relative rounded-md w-[500px] h-full object-cover"
               />
             </div>
             <div className="xl:col-span-1 col-span-2 flex flex-col gap-4">
               <span className="flex flex-col gap-2">
-                <h1 className="text-black dark:text-white text-xl font-bold tracking-widest uppercase">
+                <h1 className="text-black dark:text-white lg:text-3xl text-lg font-bold tracking-widest uppercase">
                   {product.name} Vol. {product.volume}
                 </h1>
                 <span className="flex flex-row gap-2 items-center">
@@ -106,7 +106,7 @@ function ProductPage() {
                 </h1>
               </span>
               <span className="">
-                <h1 className="text-black dark:text-white text-lg font-normal tracking-wide ">
+                <h1 className="text-black dark:text-white text-lg font-normal tracking-wide text-justify">
                   {product.description}
                 </h1>
               </span>
@@ -147,8 +147,8 @@ function ProductPage() {
                     Añadir a la cesta
                   </h1>
                 </button>
-                <button className="py-4 px-8 bg-black rounded-md w-full">
-                  <h1 className="text-sm font-bold text-white tracking-widest uppercase">
+                <button className="py-4 px-8 bg-zinc-100 dark:bg-zinc-800 rounded-md w-full">
+                  <h1 className="text-sm font-bold text-black dark:text-white tracking-widest uppercase">
                     Comprar ahora
                   </h1>
                 </button>

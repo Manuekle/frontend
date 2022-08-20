@@ -48,9 +48,9 @@ function StoragePage() {
           <Error />
         </div>
       ) : (
-        <section className="container mx-auto py-4 my-20">
+        <section className="relative container mx-auto py-4 my-20">
           <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-10 lg:col-span-3 p-2 h-auto w-auto">
+            <div className="col-span-12 lg:col-span-3 p-2 h-auto w-auto">
               <AnimatePresence initial={false}>
                 {/* categorías */}
                 <div className="border-b-2 border-t-2 border-zinc-200 dark:border-zinc-800">
@@ -136,8 +136,8 @@ function StoragePage() {
                 </div>
               </AnimatePresence>
             </div>
-            <div className="col-span-10 lg:col-span-9 p-2 h-auto w-auto">
-              <div className="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
+            <div className="col-span-12 lg:col-span-9 p-2 h-auto w-auto">
+              <div className="relative grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
                 {products.map((product) => (
                   <Card product={product} />
                 ))}

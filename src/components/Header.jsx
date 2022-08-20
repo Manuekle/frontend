@@ -200,9 +200,9 @@ function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            initial={{ x: '100vh', opacity: 1, zIndex: 1 }}
             animate={{ x: '0vh' }}
-            exit={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            exit={{ x: '100vh', opacity: 1, zIndex: 1 }}
             transition={{ duration: 0.5 }}
             className="fixed top-0 left-0 right-0 bottom-0"
           >
@@ -215,9 +215,9 @@ function Header() {
       <AnimatePresence>
         {searcher && (
           <motion.div
-            initial={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            initial={{ x: '100vh', opacity: 1, zIndex: 1 }}
             animate={{ x: '0vh' }}
-            exit={{ x: '100vh', opacity: 1, zIndex: 0 }}
+            exit={{ x: '100vh', opacity: 1, zIndex: 1 }}
             transition={{ duration: 0.5 }}
             className="fixed top-0 left-0 right-0 bottom-0"
           >
