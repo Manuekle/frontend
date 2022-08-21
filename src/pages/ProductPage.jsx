@@ -79,7 +79,7 @@ function ProductPage() {
               <img
                 src={product.image}
                 alt={product.name}
-                className="relative rounded-md w-[500px] h-full object-cover"
+                className="relative rounded-md w-[500px] h-[750px] object-cover"
               />
             </div>
             <div className="xl:col-span-1 col-span-2 flex flex-col gap-4">
@@ -106,7 +106,7 @@ function ProductPage() {
                 </h1>
               </span>
               <span className="">
-                <h1 className="text-black dark:text-white text-lg font-normal tracking-wide text-justify">
+                <h1 className="text-black dark:text-white text-lg font-normal text-justify">
                   {product.description}
                 </h1>
               </span>

@@ -117,7 +117,7 @@ function Product(props) {
             <div className="grid grid-cols-2 gap-10">
               <div className="col-span-2">
                 <span className="flex items-center">
-                  <h1 className="text-black dark:text-white text-sm font-bold uppercase tracking-widest">
+                  <h1 className="text-black dark:text-white text-sm font-bold uppercase tracking-widest w-80">
                     {props.product.name} Vol. {props.product.volume}
                   </h1>
                 </span>
@@ -169,8 +169,9 @@ function Product(props) {
           </div>
           <div className="col-span-3">
             <span>
-              <p className="text-black dark:text-white w-96 text-justify">
-                {props.product.description}
+              <p className="text-black dark:text-white w-[30em] text-justify">
+                {/* {props.product.description.substring(0, 400)} */}
+                {props.product.description.substring(0, 450)}...
               </p>
             </span>
           </div>
