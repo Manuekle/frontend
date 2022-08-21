@@ -67,24 +67,6 @@ function ProfilePage() {
             Ver más...
           </h1>
         </span>
-
-        <section className="grid grid-cols-5 gap-4">
-          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
-            <span className="flex justify-between items-center px-2 py-4" />
-          </div>
-          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
-            <span className="flex justify-between items-center px-2 py-4" />
-          </div>
-          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
-            <span className="flex justify-between items-center px-2 py-4" />
-          </div>
-          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
-            <span className="flex justify-between items-center px-2 py-4" />
-          </div>
-          <div className="col-span-1 rounded-lg bg-dark-200 dark:bg-zinc-800 flex flex-col p-2">
-            <span className="flex justify-between items-center px-2 py-4" />
-          </div>
-        </section>
       </div>
     </>
   );

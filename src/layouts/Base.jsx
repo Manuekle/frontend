@@ -60,7 +60,7 @@ function Base() {
           {/* product */}
           <Route path="/product/:id" element={<ProductPage />} />
           {/* dahboard */}
-          <Route path="/dashboard" element={<DashboardPage />}>
+          <Route path="/dashboard/*" element={<DashboardPage />}>
             <Route index element={<AccountPage />} />
             <Route path="orders" element={<OrdersPage />} />
             <Route path="inventory" element={<InventoryPage />} />

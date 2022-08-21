@@ -96,7 +96,7 @@ function LoginPage() {
                       type="email"
                       id="username"
                       name="username"
-                      className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
+                      className="outline-none font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
                       placeholder="Correo electrónico"
                     />
                     <ErrorMessage
@@ -116,7 +116,7 @@ function LoginPage() {
                       type="password"
                       id="password"
                       name="password"
-                      className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
+                      className="outline-none font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
                       placeholder="Contraseña"
                     />
                     <ErrorMessage
@@ -134,15 +134,15 @@ function LoginPage() {
                   <span className="col-span-1 pt-2 flex justify-center">
                     <button
                       type="submit"
-                      className="bg-zinc-300 dark:bg-zinc-800 w-full rounded-lg"
+                      className="bg-zinc-300 dark:bg-[#F0E9D2] w-full rounded-lg"
                     >
                       {!formData && (
-                        <h1 className="text-black dark:text-white text-md font-bold py-4">
+                        <h1 className="text-white dark:text-black text-md font-bold py-4">
                           Iniciar Sesión
                         </h1>
                       )}
                       {formData && (
-                        <Loader className="fill-black dark:fill-white" />
+                        <Loader className="fill-white dark:fill-black" />
                       )}
                     </button>
                   </span>

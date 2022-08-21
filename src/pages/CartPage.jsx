@@ -114,7 +114,7 @@ function CartPage() {
                 </h1>
               </span>
             </div>
-            <div className="lg:h-56 h-auto lg:col-span-1 col-span-4 p-7 rounded-lg bg-light-200 dark:bg-dark-200">
+            <div className="lg:h-[15em] h-auto lg:col-span-1 col-span-4 p-7 rounded-lg bg-light-200 dark:bg-dark-200">
               <div className="flex flex-col gap-2">
                 <span>
                   <h1 className="font-bold text-xl text-black dark:text-white">
@@ -146,14 +146,14 @@ function CartPage() {
                 ) : (
                   <button
                     onClick={checkoutHandler}
-                    className="py-4 px-8 bg-zinc-100 dark:bg-zinc-800 rounded-md w-full mt-2"
+                    className="py-4 px-8 bg-zinc-100 dark:bg-[#F0E9D2] rounded-md w-full mt-2"
                   >
-                    <h1 className="text-sm font-bold text-black dark:text-white tracking-widest uppercase">
+                    <h1 className="text-sm font-bold text-white dark:text-black tracking-widest uppercase">
                       Comprar ahora
                     </h1>
                   </button>
                 )}
-                <span className="flex justify-center text-center">
+                <span className="flex justify-center text-center pt-2">
                   <Link
                     to="/store"
                     className="text-black dark:text-white text-sm font-bold border-b-2 border-black dark:border-white"

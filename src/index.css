@@ -7,14 +7,14 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./assets/fonts/Inter-Regular.woff2?v=3.19") format("woff2"),
-    url("./assets/fonts/Inter-Regular.woff2?v=3.19") format("woff");
+  src: url('./assets/fonts/Inter-Regular.woff2?v=3.19') format('woff2'),
+    url('./assets/fonts/Inter-Regular.woff2?v=3.19') format('woff');
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -34,17 +34,19 @@ code {
 
 ::-webkit-scrollbar-track {
   background: #eee;
-
 }
 
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 4px;
-
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(51, 51, 51, 0.729);
 }
 
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

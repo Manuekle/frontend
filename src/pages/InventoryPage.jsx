@@ -65,8 +65,6 @@ function InventoryPage() {
     }
   }, [
     dispatch,
-    // history,
-    // userInfo,\
     keyword,
     navigate,
     location,
@@ -86,17 +84,17 @@ function InventoryPage() {
 
   return (
     <>
-      <section className="flex flex-col lg:flex-row justify-between mb-4">
+      <section className="flex flex-row lg:flex-row justify-between mb-4">
         <h1 className="flex items-center text-black dark:text-white text-md lg:text-3xl font-bold uppercase tracking-widest pb-2 lg:pb-0">
           Productos de mi inventario
         </h1>
         <button
           type="button"
           onClick={createProductHandler}
-          className="order-last flex flex-row gap-2 items-center bg-zinc-300 dark:bg-zinc-800 rounded-md py-2 px-4 w-56 lg:w-56"
+          className="order-last justify-center flex flex-row gap-2 items-center bg-zinc-300 dark:bg-[#F0E9D2] rounded-md py-2 px-4"
         >
-          <Add className="fill-black dark:fill-white" />
-          <h1 className="text-black dark:text-white text-sm lg:text-md font-bold tracking-wide capitalize">
+          <Add className="fill-white dark:fill-black" />
+          <h1 className="text-white dark:text-black text-sm lg:text-md font-bold tracking-wide capitalize">
             Agregar producto
           </h1>
         </button>
@@ -139,7 +137,7 @@ function InventoryPage() {
             </div>
           )}
           {products.map((product) => (
-            <div className="lg:col-span-1 col-span-2 py-2 ">
+            <div className="lg:col-span-1 col-span-2 py-2 px-2 border-2 rounded-md dark:border-zinc-700">
               <div className="grid grid-cols-4">
                 <div className="col-span-4 lg:col-span-3 flex flex-row items-center gap-4">
                   <Link to={`/product/${product._id}`}>
@@ -167,11 +165,11 @@ function InventoryPage() {
                 <div className="pt-2 lg:pt-0 col-span-4 lg:col-span-1 flex flex-row gap-1 items-center justify-start lg:justify-center">
                   <Link to={`product/${product._id}/edit`}>
                     {' '}
-                    <Edit className="fill-black dark:fill-white" />
+                    <Edit className="fill-[#62A388]" />
                   </Link>
                   <button onClick={() => deleteHandler(product._id)}>
                     {' '}
-                    <Delete className="fill-black dark:fill-white" />
+                    <Delete className="fill-[#C94E4E]" />
                   </button>
                 </div>
               </div>

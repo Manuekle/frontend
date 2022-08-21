@@ -52,7 +52,7 @@ function Card(props) {
               )}
             </div>
           </section>
-          <div className="p-2 bg-zinc-100 dark:bg-dark-200 rounded-b-lg h-30">
+          <div className="p-2 bg-zinc-100 dark:bg-dark-200 rounded-b-lg h-20">
             <div className="grid grid-cols-6">
               <div className="col-span-5">
                 <h1 className="text-black dark:text-white text-sm font-bold uppercase">

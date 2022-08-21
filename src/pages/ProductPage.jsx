@@ -141,7 +141,7 @@ function ProductPage() {
               <span className="gap-6 flex flex-col rounded-md  py-4 px-4">
                 <button
                   onClick={addToCartHandler}
-                  className="py-4 px-8 bg-white hover:bg-zinc-200 rounded-md w-full"
+                  className="py-4 px-8 dark:bg-[#F0E9D2] rounded-md w-full"
                 >
                   <h1 className="text-sm font-bold text-black tracking-widest uppercase">
                     Añadir a la cesta

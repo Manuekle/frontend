@@ -13,7 +13,7 @@ import Delete from '../assets/svg/delete';
 
 import { addToCart, removeFromCart } from '../actions/cartActions';
 
-function CartProduct(props) {
+function CartModal(props) {
   const { product } = props;
   const [qty, setQty] = useState(product.qty);
 
@@ -40,19 +40,14 @@ function CartProduct(props) {
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   };
-
-  //   const checkoutHandler = () => {
-  //     navigate("/login?redirect=shipping");
-  //   };
-
   return (
-    <div className="grid grid-cols-8 gap-4">
-      <div className="lg:col-span-4 col-span-8 flex flex-row items-center gap-4">
+    <>
+      <div className="col-span-1 flex flex-row gap-4 items-center">
         <Link to={`/product/${product.product}`}>
           <img
             src={product.image}
             alt={product.name}
-            className="relative rounded-md w-[70px] h-full"
+            className="relative rounded-md w-[80px] h-[100px] object-cover"
           />
         </Link>
         <span className="flex flex-col gap-1">
@@ -66,11 +61,11 @@ function CartProduct(props) {
             {product.category}
           </h1>
           <h1 className="text-black dark:text-white text-xs font-semibold uppercase">
-            $ {product.price}
+            $ {(product.qty * product.price).toFixed(2)}
           </h1>
         </span>
       </div>
-      <div className="lg:col-span-2 col-span-4 p-2 flex flex-row gap-2 items-center">
+      <div className="col-span-1 flex flex-col justify-center items-center gap-4">
         <span className="flex flex-row pt-1 pb-1 h-14 items-center">
           <button
             onClick={decrementQty}
@@ -93,17 +88,15 @@ function CartProduct(props) {
               <Add className="fill-black dark:fill-white" />
             </span>
           </button>
+          <span>
+            <button onClick={() => removeFromCartHandler(product.product)}>
+              <Delete className="fill-[#C94E4E]" />
+            </button>
+          </span>
         </span>
-        <button onClick={() => removeFromCartHandler(product.product)}>
-          <Delete className="fill-[#C94E4E]" />
-        </button>
       </div>
-      <div className="col-span-4 lg:col-span-2 p-2 flex items-center justify-end">
-        <h1 className="text-black dark:text-white text-sm font-semibold tracking-wide ">
-          Total: ${(product.qty * product.price).toFixed(2)}
-        </h1>
-      </div>
-    </div>
+    </>
   );
 }
-export default CartProduct;
+
+export default CartModal;

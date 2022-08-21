@@ -23,6 +23,8 @@ import ShoppingCart from '../assets/svg/shoppingCart';
 import OpenDoor from '../assets/svg/openDoor';
 import UserSettings from '../assets/svg/userSettings';
 
+import NotFoundPage from '../pages/NotFoundPage';
+
 function Dashboard() {
   const navigate = useNavigate();
 
@@ -111,6 +113,8 @@ function Dashboard() {
               path="inventory/product/:id/edit"
               element={<ProductEditPage />}
             />
+            {/* not found */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </div>

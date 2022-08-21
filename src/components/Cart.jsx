@@ -1,20 +1,24 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // Icons
 import Bag from '../assets/svg/bag';
 import Close from '../assets/svg/close';
 
+import CartModal from './CartModal';
+
 function Cart(props) {
   const cart = useSelector((state) => state.cart);
   const { loading, error, cartItems } = cart;
+
   return (
     <div>
       <section className="absolute bg-white dark:bg-dark-200 top-0 right-0 flex justify-center h-full rounded-l-xl">
@@ -26,9 +30,15 @@ function Cart(props) {
               </span>
               <span>
                 {/* <h1 className="text-md font-bold">0 Artículos</h1> */}
-                <h1 className="text-md font-bold text-black dark:text-white">
-                  Carrito
-                </h1>
+                {cartItems.length === 0 ? (
+                  <h1 className="text-md font-bold text-black dark:text-white">
+                    Carrito
+                  </h1>
+                ) : (
+                  <h1 className="text-md font-bold text-black dark:text-white">
+                    {cartItems.length} Artículos
+                  </h1>
+                )}
               </span>
             </div>
             <div className="col-span-1 flex justify-end items-center pt-2">
@@ -62,7 +72,15 @@ function Cart(props) {
               </div>
             </section>
           ) : (
-            <></>
+            <section className="p-6">
+              <div className="grid grid-cols-2 gap-4">
+                {cartItems.map((product) => (
+                  <>
+                    <CartModal product={product} />
+                  </>
+                ))}
+              </div>
+            </section>
           )}
         </div>
       </section>

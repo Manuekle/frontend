@@ -114,7 +114,7 @@ function RegisterPage() {
                       type="text"
                       id="name"
                       name="name"
-                      className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
+                      className="outline-none font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
                       placeholder="Nombre de usuario"
                     />
                     <ErrorMessage
@@ -134,7 +134,7 @@ function RegisterPage() {
                       type="email"
                       id="email"
                       name="email"
-                      className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
+                      className="outline-none font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
                       placeholder="Correo electrónico"
                     />
                     <ErrorMessage
@@ -154,7 +154,7 @@ function RegisterPage() {
                       type="password"
                       id="password"
                       name="password"
-                      className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
+                      className="outline-none font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
                       placeholder="Contraseña"
                     />
                     <ErrorMessage
@@ -174,7 +174,7 @@ function RegisterPage() {
                       type="password"
                       id="confirmPassword"
                       name="confirmPassword"
-                      className="font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
+                      className="outline-none font-bold relative text-black placeholder-zinc-400 dark:placeholder-zinc-400 dark:text-white bg-zinc-200 dark:bg-zinc-800 rounded-md py-3 pl-12 w-full"
                       placeholder="Confirmar contraseña"
                     />
                     <ErrorMessage
