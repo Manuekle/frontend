@@ -1,3 +1,9 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable react/button-has-type */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-undef */
+/* eslint-disable consistent-return */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable func-names */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable array-callback-return */
@@ -8,7 +14,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import { listProducts } from '../actions/productActions';
+
+import Arrow from '../assets/svg/arrow';
 
 import Card from './Card';
 
@@ -21,7 +30,6 @@ function News() {
   const productList = useSelector((state) => state.productList);
   const { error, loading, products } = productList;
 
-  // change createdAt from Date to String -
   const productsWithDate = products
     .map((product) => {
       const date = new Date(product.createdAt);
@@ -30,18 +38,10 @@ function News() {
     })
     .reverse();
 
-  // console.log(productsWithDate);
-
-  // const [days, setDays] = useState(null);
-
-  const [productFilter, setProductFilter] = useState([]);
-
   const time = new Date();
-
   const day = time.getDate();
   const month = time.getMonth() + 1;
   const year = time.getFullYear();
-
   const today = `0${month}/${day}/${year}`;
 
   const OFFSET_TO_UTC = new Date().getTimezoneOffset();
@@ -68,7 +68,7 @@ function News() {
   const toDate = (localized) =>
     new Date(
       localized.year,
-      localized.month,
+      localized.month - 1,
       localized.day,
       0,
       0 - OFFSET_TO_UTC,
@@ -86,9 +86,6 @@ function News() {
       });
     };
   const dateNow = parseDate(['m', 'd', 'y'], '/', `${today}`);
-  const onlyUSUntil = filterByDatePattern(['m', 'd', 'y'], '/');
-
-  // console.log(onlyUSUntil(new Date(dateNow), productsWithDate));
 
   const dias = [
     'domingo',
@@ -101,48 +98,88 @@ function News() {
   ];
 
   const numeroDia = new Date(today).getDay();
-  // console.log(numeroDia);
 
   const nombreDia = dias[numeroDia];
-  // console.log(nombreDia);
+
+  const dates = parseDate(['m', 'd', 'y'], '/', '08/27/2022');
+  const dates2 = parseDate(['m', 'd', 'y'], '/', '09/03/2022');
+
+  const [available, setAvailable] = useState(dates);
+
+  const onlyUSUntil = filterByDatePattern(['m', 'd', 'y'], '/');
+  const filter = onlyUSUntil(available, productsWithDate);
 
   const setDate = () => {
-    if (nombreDia === 'jueves') {
-      // console.log(onlyUSUntil(new Date(dateNow), productsWithDate));
-      setProductFilter(onlyUSUntil(new Date(dateNow), productsWithDate));
-    } else {
-      console.log('No es jueves');
-      setProductFilter([]);
+    if (nombreDia === 'sábado') {
+      setAvailable(dateNow);
     }
   };
+
+  console.log(available);
 
   useEffect(() => {
     dispatch(listProducts(keyword));
     setDate();
-    // setProductFilter(onlyUSUntil(new Date(days), productsWithDate));
   }, [dispatch, keyword]);
 
-  // console.log(days);
-  // console.log(productFilter);
-
+  console.log(filter);
   return (
     <>
-      <section className="pt-20 lg:px-0 px-6">
+      <section className="pt-28 lg:px-0 px-6">
         <div className="grid grid-cols-3 items-center">
           <h1 className="col-span-2 flex justify-start text-white font-bold lg:text-4xl text-2xl pb-8 capitalize">
             Novedades de la semana
           </h1>
-          <h1 className="col-span-1 flex justify-end text-zinc-400 font-bold lg:text-sm text-xs pb-8 tracking-wider">
-            Ver mas ...
-          </h1>
         </div>
-        <div className="col-span-12 lg:col-span-9 p-2 h-auto w-auto">
-          <div className="relative grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
-            {productFilter.map((product) => (
-              <Card product={product} />
-            ))}
-          </div>
-        </div>
+        {/* <div className="relative grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
+          {filter.map((product) => (
+            <Card product={product} />
+          ))}
+        </div> */}
+        <>
+          <Splide
+            hasTrack={false}
+            options={{
+              type: 'loop',
+              pagination: false,
+              perPage: 5,
+              perMove: 1,
+              rewindByDrag: false,
+              speed: 1000,
+              autoplay: true,
+              gap: '2em',
+              arrows: true,
+              fade: true
+            }}
+          >
+            <SplideTrack>
+              {filter.map((product) => (
+                <SplideSlide>
+                  <Card product={product} />
+                </SplideSlide>
+              ))}
+            </SplideTrack>
+
+            <div className="splide__arrows grid grid-cols-2">
+              <button className="pt-8 col-span-1 flex justify-start splide__arrow--prev">
+                <Arrow
+                  className="dark:fill-white fill-black"
+                  style={{
+                    transform: 'rotate(360deg)'
+                  }}
+                />
+              </button>
+              <button className="pt-8 col-span-1 flex justify-end splide__arrow--next">
+                <Arrow
+                  className="dark:fill-white fill-black"
+                  style={{
+                    transform: 'rotate(180deg)'
+                  }}
+                />
+              </button>
+            </div>
+          </Splide>
+        </>
       </section>
     </>
   );
