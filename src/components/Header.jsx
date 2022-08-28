@@ -17,6 +17,7 @@ import Search from '../assets/svg/search';
 import Logout from '../assets/svg/logout';
 import Place from '../assets/svg/place';
 import Menu from '../assets/svg/menu';
+import Drop from '../assets/svg/drop';
 
 // DarkMode
 import DarkMode from './DarkModeSwitch';
@@ -28,8 +29,10 @@ function Header() {
   const [searcher, cycleOpenSearcher] = useCycle(false, true);
 
   const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  const { cartItems, shippingAddress } = cart;
   // console.log(cartItems);
+
+  const { city } = shippingAddress;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -56,18 +59,37 @@ function Header() {
             {/* <div className="">
               <img src={img} alt="Manganiacos" className="rounded-full w-12" />
             </div> */}
-            <div className="dark:text-white text-black font-bold text-2xl">
-              <h1>Manganiacos</h1>
+            <div className="flex flex-row gap-3">
+              <Link to="/">
+                <h1 className="dark:text-white text-black font-bold text-2xl capitalize tracking-wider">
+                  Manganiacos
+                </h1>
+              </Link>
+              <div className="flex flex-row items-center gap-0.5">
+                <span>
+                  <Drop className="dark:fill-white fill-black" />
+                </span>
+                <span className="flex flex-col gap-0">
+                  <h1 className="text-black dark:text-white text-xs font-normal">
+                    Enviar a
+                  </h1>
+                  <h1 className="text-black dark:text-white text-xs font-normal capitalize">
+                    {city}
+                  </h1>
+                </span>
+              </div>
             </div>
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-center items-center">
             <div className="dark:text-white text-black active:text-url-100 font-semibold">
+              <Link to="/" style={{ fontSize: '14px' }}>
+                Inicio
+              </Link>
+            </div>
+            <div className="dark:text-white text-black active:text-url-100 font-semibold">
               <Link to="/store" style={{ fontSize: '14px' }}>
                 Tienda
               </Link>
-            </div>
-            <div className="dark:text-white text-black font-semibold">
-              <h1 style={{ fontSize: '14px' }}>Categorias</h1>
             </div>
             <div className="dark:text-white text-black font-semibold">
               <h1 style={{ fontSize: '14px' }}>Nosotros</h1>
@@ -131,7 +153,7 @@ function Header() {
         </section>
       </header>
       {/* Mobile */}
-      <header className="dark:bg-black bg-white py-4 lg:hidden block border-b-2 dark:border-b-white border-b-black">
+      <header className="dark:bg-dark-100 bg-white py-4 lg:hidden block">
         <section className="container mx-auto grid grid-cols-3 gap-3 px-2">
           <div className="col-span-1 flex flex-row gap-2 justify-start items-center pl-4">
             <span className="flex justify-start items-center">
@@ -151,9 +173,11 @@ function Header() {
           </div>
           <div className="col-span-1 flex flex-row gap-3 justify-center items-center">
             <span className="flex justify-center items-center ">
-              <div className="text-white dark:text-black font-bold text-2xl text-center">
-                <h1>Manganiacos</h1>
-              </div>
+              <Link to="/">
+                <h1 className="dark:text-white text-black font-bold text-2xl capitalize tracking-wider">
+                  Manganiacos
+                </h1>
+              </Link>
             </span>
           </div>
           <div className="col-span-1 flex flex-row gap-2 justify-end items-center pr-4">

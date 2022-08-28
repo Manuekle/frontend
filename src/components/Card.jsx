@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/prop-types */
@@ -9,14 +11,17 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion, useCycle } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Cart from '../assets/svg/cart';
 import Product from './Product';
 
 function Card(props) {
   const { product } = props;
+
+  const [name, setName] = useState(product.name.toLowerCase());
 
   const [openProduct, cycleOpenProduct] = useCycle(false, true);
 
@@ -27,16 +32,16 @@ function Card(props) {
   return (
     <>
       <section>
-        <div className="shadow-lg rounded-lg">
-          <section className="relative">
+        <div className="rounded-md bg-zinc-800 p-2">
+          <section className="relative py-4 px-12">
             <Link to={`/product/${product._id}`}>
               <img
                 src={product.image}
                 alt={product.name}
-                className="rounded-t-lg w-full xl:h-96 h-full object-cover relative"
+                className="rounded-lg w-full h-56 object-cover relative"
               />
             </Link>
-            <div className="absolute top-2 right-2 flex">
+            {/* <div className="absolute top-2 right-2 flex">
               {product.countInStock > 0 ? (
                 <span className="bg-black px-2 py-2 bg-opacity-40 backdrop-blur-md rounded drop-shadow-lg">
                   <h1 className="tracking-widest uppercase text-white text-xs">
@@ -50,40 +55,43 @@ function Card(props) {
                   </h1>
                 </span>
               )}
+            </div> */}
+          </section>
+          <section className="px-12 flex flex-col">
+            <h1 className="text-black dark:text-zinc-400 text-xs font-bold capitalize">
+              Editorial {product.editorial}
+            </h1>
+            <h1 className="text-black dark:text-white text-sm font-bold capitalize">
+              {name.length > 16
+                ? `${
+                    name.charAt(0).toUpperCase() +
+                    name.slice(1).substring(0, 16)
+                  }...`
+                : `${name.charAt(0).toUpperCase() + name.slice(1)} Vol. ${
+                    product.volume
+                  }`}
+            </h1>
+          </section>
+          <section className="grid grid-cols-2 px-12 pt-3 pb-4">
+            <div className="col-span-1 flex items-center justify-start ">
+              <h1 className="text-black dark:text-white text-sm font-bold capitalize">
+                $ {product.price}
+              </h1>
+            </div>
+            <div className="col-span-1 flex items-center justify-end">
+              <button
+                type="button"
+                onClick={openProductHandler}
+                className="dark:bg-zinc-800 bg-zinc-300 rounded-md"
+              >
+                <span>
+                  <Cart className="fill-black dark:fill-white" />
+                </span>
+              </button>
             </div>
           </section>
-          <div className="p-2 bg-zinc-100 dark:bg-dark-200 rounded-b-lg h-20">
-            <div className="grid grid-cols-6">
-              <div className="col-span-5">
-                <h1 className="text-black dark:text-white text-sm font-bold uppercase">
-                  {product.name} Vol. {product.volume}
-                </h1>
-                <h1 className="text-black dark:text-white text-sm font-bold uppercase">
-                  $ {product.price}
-                </h1>
-              </div>
-              <div className="col-span-1 flex items-start justify-center">
-                <button
-                  type="button"
-                  onClick={openProductHandler}
-                  className="dark:bg-zinc-800 bg-zinc-300 p-2 rounded-md"
-                >
-                  <span>
-                    <Cart className="fill-black dark:fill-white" />
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
-      {/* <AnimatePresence>
-          {isModalOpen && (
-            <Modal isModalOpen={isModalOpen} handleClose={close}>
-              A nice message
-            </Modal>
-          )}
-        </AnimatePresence> */}
       <AnimatePresence>
         {openProduct && (
           <motion.div

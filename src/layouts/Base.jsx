@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+/* eslint-disable react/jsx-no-useless-fragment */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -39,7 +42,7 @@ function Base() {
       <Router>
         <Header />
         <div className="container mx-auto lg:px-0 px-4 pt-8 lg:pt-10">
-          <Back />
+          {/* {location === '/' ? <Back /> : null} */}
         </div>
         <Routes>
           {/* home */}
