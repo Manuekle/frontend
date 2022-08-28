@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { listProducts } from '../actions/productActions';
 
-// import Card from '../components/Card';
+import Card from './Card';
 
 function News() {
   const dispatch = useDispatch();
@@ -123,7 +123,7 @@ function News() {
   }, [dispatch, keyword]);
 
   // console.log(days);
-  console.log(productFilter);
+  // console.log(productFilter);
 
   return (
     <>
@@ -136,8 +136,12 @@ function News() {
             Ver mas ...
           </h1>
         </div>
-        <div className="grid grid-cols-4 gap-8 lg:px-28 px-0">
-          <div className="col-span-1 p-44"></div>
+        <div className="col-span-12 lg:col-span-9 p-2 h-auto w-auto">
+          <div className="relative grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
+            {productFilter.map((product) => (
+              <Card product={product} />
+            ))}
+          </div>
         </div>
       </section>
     </>
