@@ -48,8 +48,6 @@ function Header() {
     }
   };
 
-  // useEffect(() => {
-  // }, [userInfo, navigate]);
   return (
     <>
       {/* Desktop */}
@@ -81,12 +79,12 @@ function Header() {
             </div>
           </div>
           <div className="col-span-2 flex flex-row gap-3 justify-center items-center">
-            <div className="dark:text-white text-black active:text-url-100 font-semibold">
+            <div className="dark:text-white text-black font-semibold">
               <Link to="/" style={{ fontSize: '14px' }}>
                 Inicio
               </Link>
             </div>
-            <div className="dark:text-white text-black active:text-url-100 font-semibold">
+            <div className="dark:text-white text-black font-semibold">
               <Link to="/store" style={{ fontSize: '14px' }}>
                 Tienda
               </Link>
@@ -223,17 +221,19 @@ function Header() {
         </AnimatePresence> */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ x: '100vh', opacity: 1, zIndex: 1 }}
-            animate={{ x: '0vh' }}
-            exit={{ x: '100vh', opacity: 1, zIndex: 1 }}
-            transition={{ duration: 0.5 }}
-            className="fixed top-0 left-0 right-0 bottom-0"
-          >
-            <>
-              <Cart onClick={cycleOpen} />
-            </>
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ x: '100vh', opacity: 1, zIndex: 1 }}
+              animate={{ x: '0vh' }}
+              exit={{ x: '100vh', opacity: 1, zIndex: 1 }}
+              transition={{ duration: 0.5 }}
+              className="fixed top-0 left-0 right-0 bottom-0"
+            >
+              <>
+                <Cart onClick={cycleOpen} />
+              </>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
       <AnimatePresence>

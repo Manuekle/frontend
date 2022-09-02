@@ -11,8 +11,8 @@ import Loader from '../assets/svg/loader';
 
 import Tag from '../assets/svg/tag';
 import Book from '../assets/svg/book';
-import Remove from '../assets/svg/remove';
-import Add from '../assets/svg/add';
+import Plus from '../assets/svg/plus';
+import Minus from '../assets/svg/minus';
 import ShippingCar from '../assets/svg/shippingCar';
 import Lock from '../assets/svg/lock';
 import Star from '../assets/svg/star';
@@ -79,7 +79,7 @@ function ProductPage() {
               <img
                 src={product.image}
                 alt={product.name}
-                className="relative rounded-md w-[500px] h-[750px] object-cover"
+                className="relative rounded-md w-[500px] h-[750px] object-cover shadow-md"
               />
             </div>
             <div className="xl:col-span-1 col-span-2 flex flex-col gap-4">
@@ -119,36 +119,31 @@ function ProductPage() {
                 <span className="flex flex-row pt-1 pb-1">
                   <button
                     onClick={decrementQty}
-                    className="px-2 py-2 rounded-l-md border-2 border-zinc-300 dark:border-zinc-800 p-4 "
+                    className="px-2 py-2 rounded-l-md border-2 border-light dark:border-zinc-200 p-4 border-r-0"
                   >
                     <span>
-                      <Remove className="fill-black dark:fill-white" />
+                      <Minus className="fill-black dark:fill-white" />
                     </span>
                   </button>
-                  <button className="px-4 py-2 p-4 border-2 border-zinc-300 dark:border-zinc-800 border-l-0 border-r-0">
+                  <button className="px-4 py-2 p-4 border-2 border-light dark:border-zinc-200 border-l-0 border-r-0">
                     <span className="text-black dark:text-white">{qty}</span>
                   </button>
                   <button
                     onClick={incremenateQty}
-                    className="px-2 py-2 rounded-r-md border-2 border-zinc-300 dark:border-zinc-800 p-4"
+                    className="px-2 py-2 rounded-r-md border-2 border-light dark:border-zinc-200 p-4 border-l-0"
                   >
                     <span>
-                      <Add className="fill-black dark:fill-white" />
+                      <Plus className="fill-black dark:fill-white" />
                     </span>
                   </button>
                 </span>
               </span>
-              <span className="gap-6 flex flex-col rounded-md  py-4 px-4">
+              <span className="gap-6 flex flex-col rounded-md py-4">
                 <button
                   onClick={addToCartHandler}
-                  className="py-4 px-8 dark:bg-[#F0E9D2] rounded-md w-full"
+                  className="py-4 px-8 bg-zinc-800 dark:bg-[#F0E9D2] rounded-md w-full hover:shadow-sm transform transition duration-500"
                 >
-                  <h1 className="text-sm font-bold text-black tracking-widest uppercase">
-                    Añadir a la cesta
-                  </h1>
-                </button>
-                <button className="py-4 px-8 bg-zinc-100 dark:bg-zinc-800 rounded-md w-full">
-                  <h1 className="text-sm font-bold text-black dark:text-white tracking-widest uppercase">
+                  <h1 className="text-sm font-bold text-zinc-100 dark:text-zinc-800 tracking-widest uppercase">
                     Comprar ahora
                   </h1>
                 </button>

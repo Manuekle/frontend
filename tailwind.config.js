@@ -10,7 +10,10 @@ module.exports = {
           100: '#171717'
         },
         light: {
-          100: '#EEEEEE'
+          100: '#FAF3F3',
+          200: '#CEE5D0',
+          300: '#A7BBC7',
+          400: '#DA7F8F'
         },
         url: {
           100: '#C94E4E',
@@ -19,17 +22,18 @@ module.exports = {
       },
       backgroundColor: {
         dark: {
-          100: '#151516',
-          200: '#1D1D1F'
+          100: '#242529',
+          200: '#323337'
         },
         light: {
-          100: '#F5F5F7',
-          200: '#FFFFFF'
+          100: '#FAF3F3',
+          200: '#F7EDDB',
+          300: '#FBF8F1'
         }
       },
       borderColor: {
         dark: '#35373B',
-        light: '#fff601'
+        light: '#181818'
       }
     }
   },

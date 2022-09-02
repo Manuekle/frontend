@@ -146,7 +146,7 @@ function CartPage() {
                 ) : (
                   <button
                     onClick={checkoutHandler}
-                    className="py-4 px-8 bg-zinc-100 dark:bg-[#F0E9D2] rounded-md w-full mt-2"
+                    className="py-4 px-8 bg-zinc-800 dark:bg-[#F0E9D2] rounded-md w-full mt-2"
                   >
                     <h1 className="text-sm font-bold text-white dark:text-black tracking-widest uppercase">
                       Comprar ahora
@@ -156,7 +156,7 @@ function CartPage() {
                 <span className="flex justify-center text-center pt-2">
                   <Link
                     to="/store"
-                    className="text-black dark:text-white text-sm font-bold border-b-2 border-black dark:border-white"
+                    className="text-zinc-800 dark:text-white text-sm font-bold border-b-2 border-zinc-500 hover:border-zinc-800 dark:border-white"
                   >
                     Seguir Comprando
                   </Link>

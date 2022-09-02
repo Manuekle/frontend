@@ -7,8 +7,8 @@ import React, { useState, useEffect } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Remove from '../assets/svg/remove';
-import Add from '../assets/svg/add';
+import Minus from '../assets/svg/minus';
+import Plus from '../assets/svg/plus';
 import Delete from '../assets/svg/delete';
 
 import { addToCart, removeFromCart } from '../actions/cartActions';
@@ -71,26 +71,24 @@ function CartProduct(props) {
         </span>
       </div>
       <div className="lg:col-span-2 col-span-4 p-2 flex flex-row gap-2 items-center">
-        <span className="flex flex-row pt-1 pb-1 h-14 items-center">
+        <span className="flex flex-row pt-1 pb-1">
           <button
             onClick={decrementQty}
-            //   onChange={() => dispatch(addToCart(product.product, qty))}
-            className="px-2 py-2 rounded-l-md border-r-1 p-4 border-2 border-zinc-300 dark:border-zinc-800"
+            className="px-2 py-2 rounded-l-md border-2 border-light dark:border-zinc-200 p-4 border-r-0"
           >
             <span>
-              <Remove className="fill-black dark:fill-white" />
+              <Minus className="fill-black dark:fill-white" />
             </span>
           </button>
-          <button className="px-4 py-2 p-4 border-2 border-zinc-300 dark:border-zinc-800 border-l-0 border-r-0">
+          <button className="px-4 py-2 p-4 border-2 border-light dark:border-zinc-200 border-l-0 border-r-0">
             <span className="text-black dark:text-white">{qty}</span>
           </button>
           <button
             onClick={incremenateQty}
-            //   onChange={() => dispatch(addToCart(product.product, qty))}
-            className="px-2 py-2 rounded-r-md p-4 border-2 border-zinc-300 dark:border-zinc-800"
+            className="px-2 py-2 rounded-r-md border-2 border-light dark:border-zinc-200 p-4 border-l-0"
           >
             <span>
-              <Add className="fill-black dark:fill-white" />
+              <Plus className="fill-black dark:fill-white" />
             </span>
           </button>
         </span>

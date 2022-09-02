@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react/button-has-type */
 /* eslint-disable import/no-unresolved */
@@ -16,6 +17,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import { listProducts } from '../actions/productActions';
+
+import Loader from '../assets/svg/loader';
+import Error from './Error';
 
 import Arrow from '../assets/svg/arrow';
 
@@ -102,7 +106,6 @@ function News() {
   const nombreDia = dias[numeroDia];
 
   const dates = parseDate(['m', 'd', 'y'], '/', '08/27/2022');
-  const dates2 = parseDate(['m', 'd', 'y'], '/', '09/03/2022');
 
   const [available, setAvailable] = useState(dates);
 
@@ -110,77 +113,97 @@ function News() {
   const filter = onlyUSUntil(available, productsWithDate);
 
   const setDate = () => {
-    if (nombreDia === 'sábado') {
+    if (nombreDia === 'martes') {
       setAvailable(dateNow);
     }
   };
 
-  console.log(available);
+  // console.log(available);
 
   useEffect(() => {
     dispatch(listProducts(keyword));
     setDate();
   }, [dispatch, keyword]);
 
-  console.log(filter);
+  // // console.log(filter);
   return (
     <>
-      <section className="pt-28 lg:px-0 px-6">
-        <div className="grid grid-cols-3 items-center">
-          <h1 className="col-span-2 flex justify-start text-white font-bold lg:text-4xl text-2xl pb-8 capitalize">
-            Novedades de la semana
-          </h1>
+      {loading ? (
+        <div className="grid place-items-center h-96">
+          <Loader
+            width="200px"
+            height="200px"
+            className="fill-black dark:fill-white"
+          />
         </div>
-        {/* <div className="relative grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
+      ) : error ? (
+        <div className="grid place-items-center h-auto my-8 lg:my-44">
+          <Error />
+        </div>
+      ) : (
+        <>
+          {filter.length > 0 ? (
+            <section className="pt-28 lg:px-0 px-6">
+              <div className="grid grid-cols-3 items-center">
+                <h1 className="col-span-2 flex justify-start text-zinc-800 dark:text-zinc-100 font-bold lg:text-4xl text-2xl pb-8 capitalize">
+                  Novedades de la semana
+                </h1>
+              </div>
+              {/* <div className="relative grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
           {filter.map((product) => (
             <Card product={product} />
           ))}
         </div> */}
-        <>
-          <Splide
-            hasTrack={false}
-            options={{
-              type: 'loop',
-              pagination: false,
-              perPage: 5,
-              perMove: 1,
-              rewindByDrag: false,
-              speed: 1000,
-              autoplay: true,
-              gap: '2em',
-              arrows: true,
-              fade: true
-            }}
-          >
-            <SplideTrack>
-              {filter.map((product) => (
-                <SplideSlide>
-                  <Card product={product} />
-                </SplideSlide>
-              ))}
-            </SplideTrack>
+              <>
+                <Splide
+                  hasTrack={false}
+                  options={{
+                    type: 'loop',
+                    pagination: false,
+                    perPage: 5,
+                    perMove: 1,
+                    rewindByDrag: false,
+                    speed: 1000,
+                    autoplay: true,
+                    gap: '2em',
+                    arrows: true,
+                    fade: true
+                  }}
+                >
+                  <SplideTrack>
+                    {filter.map((product) => (
+                      <SplideSlide>
+                        <Card product={product} />
+                      </SplideSlide>
+                    ))}
+                  </SplideTrack>
 
-            <div className="splide__arrows grid grid-cols-2">
-              <button className="pt-8 col-span-1 flex justify-start splide__arrow--prev">
-                <Arrow
-                  className="dark:fill-white fill-black"
-                  style={{
-                    transform: 'rotate(360deg)'
-                  }}
-                />
-              </button>
-              <button className="pt-8 col-span-1 flex justify-end splide__arrow--next">
-                <Arrow
-                  className="dark:fill-white fill-black"
-                  style={{
-                    transform: 'rotate(180deg)'
-                  }}
-                />
-              </button>
-            </div>
-          </Splide>
+                  <div className="splide__arrows grid grid-cols-2">
+                    <button className="pt-8 col-span-1 flex justify-start splide__arrow--prev">
+                      <Arrow
+                        className="dark:fill-white fill-black"
+                        style={{
+                          transform: 'rotate(360deg)'
+                        }}
+                      />
+                    </button>
+                    <button className="pt-8 col-span-1 flex justify-end splide__arrow--next">
+                      <Arrow
+                        className="dark:fill-white fill-black"
+                        style={{
+                          transform: 'rotate(180deg)'
+                        }}
+                      />
+                    </button>
+                  </div>
+                </Splide>
+              </>
+            </section>
+          ) : (
+            <></>
+          )}
         </>
-      </section>
+      )}
     </>
   );
 }

@@ -32,13 +32,14 @@ function Card(props) {
   return (
     <>
       <section>
-        <div className="rounded-md bg-zinc-800 p-2">
+        {/* bg-opacity-60 backdrop-filter backdrop-blur-lg */}
+        <div className="relative rounded-md bg-light-200 dark:bg-dark-200 p-2 shadow-sm">
           <section className="relative py-4 px-12">
             <Link to={`/product/${product._id}`}>
               <img
                 src={product.image}
                 alt={product.name}
-                className="rounded-lg w-full h-56 object-cover relative"
+                className="rounded-lg w-full h-56 object-cover relative shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl"
               />
             </Link>
             {/* <div className="absolute top-2 right-2 flex">
@@ -58,10 +59,10 @@ function Card(props) {
             </div> */}
           </section>
           <section className="px-12 flex flex-col">
-            <h1 className="text-black dark:text-zinc-400 text-xs font-bold capitalize">
+            <h1 className="text-zinc-500 dark:text-zinc-400 text-xs font-bold capitalize">
               Editorial {product.editorial}
             </h1>
-            <h1 className="text-black dark:text-white text-sm font-bold capitalize">
+            <h1 className="text-zinc-700 dark:text-zinc-100 text-sm font-bold capitalize">
               {name.length > 16
                 ? `${
                     name.charAt(0).toUpperCase() +
@@ -74,18 +75,14 @@ function Card(props) {
           </section>
           <section className="grid grid-cols-2 px-12 pt-3 pb-4">
             <div className="col-span-1 flex items-center justify-start ">
-              <h1 className="text-black dark:text-white text-sm font-bold capitalize">
+              <h1 className="text-zinc-700 dark:text-zinc-100 text-sm font-bold capitalize">
                 $ {product.price}
               </h1>
             </div>
             <div className="col-span-1 flex items-center justify-end">
-              <button
-                type="button"
-                onClick={openProductHandler}
-                className="dark:bg-zinc-800 bg-zinc-300 rounded-md"
-              >
+              <button type="button" onClick={openProductHandler}>
                 <span>
-                  <Cart className="fill-black dark:fill-white" />
+                  <Cart className="fill-zinc-500 dark:fill-zinc-400 hover:fill-zinc-800 dark:hover:fill-zinc-100" />
                 </span>
               </button>
             </div>
