@@ -176,7 +176,7 @@ function InventoryPage() {
             </div>
           ))}
           <div className="col-span-2">
-            <PaginateInventory page={page} pages={pages} keyword={keyword} />
+            {/* <PaginateInventory page={page} pages={pages} keyword={keyword} /> */}
           </div>
         </section>
       )}

@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-nested-ternary */
@@ -149,8 +150,43 @@ function StoragePage() {
                   <Card product={product} />
                 ))}
               </div>
-              <Paginate page={page} pages={pages} keyword={keyword} />
+              {/* <Paginate page={page} pages={pages} keyword={keyword} /> */}
             </div>
+          </div>
+          <div className="grid grid-cols-1 p-2 mt-10 px-44 gap-4">
+            <span>
+              <h1 className="text-zinc-100 font-bold text-xl">
+                Las mejores colecciones de manga las encuentras
+              </h1>
+            </span>
+            <span>
+              <p className="text-zinc-100 font-bold text-xs">
+                ¿Buscando un manga en especial? Aquí encontrarás una exclusiva
+                colección de manga para que disfrutes de un buen rato de
+                lectura.
+              </p>
+            </span>
+            <span>
+              <p className="text-zinc-100 font-bold text-xs">
+                Sabemos que la magia de tener un manga en físico no se compara,
+                por eso, compra aquí tu manga y te lo enviamos a la puerta de tu
+                casa en Colombia.
+              </p>
+            </span>
+            <br />
+            <span>
+              <h1 className="text-zinc-100 font-bold text-xl">
+                ¿Por qué el manga se lee al revés?
+              </h1>
+            </span>
+            <span>
+              <p className="text-zinc-100 font-bold text-xs">
+                Esto no es totalmente cierto, lo que sucede es que los mangas se
+                leen en la dirección de la escritura en japonés: de derecha a
+                izquierda y de arriba a abajo. Algo distinto a la forma de leer
+                tradicional en Occidente.
+              </p>
+            </span>
           </div>
         </section>
       )}

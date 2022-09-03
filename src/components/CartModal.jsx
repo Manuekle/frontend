@@ -17,6 +17,13 @@ function CartModal(props) {
   const { product } = props;
   const [qty, setQty] = useState(product.qty);
 
+  const total = product.qty * product.price;
+
+  const price = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP'
+  }).format(total);
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -61,7 +68,7 @@ function CartModal(props) {
             {product.category}
           </h1>
           <h1 className="text-black dark:text-white text-xs font-semibold uppercase">
-            $ {(product.qty * product.price).toFixed(2)}
+            {price.substring(0, price.length - 3)}
           </h1>
         </span>
       </div>

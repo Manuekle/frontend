@@ -49,6 +49,11 @@ function ProductPage() {
   // const userLogin = useSelector((state) => state.userLogin);
   // const { userInfo } = userLogin;
 
+  const price = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP'
+  }).format(product.price);
+
   const addToCartHandler = () => {
     // navigate(`/cart/${params.id}?qty=${qty}`)
     navigate(`/cart/${params.id}?qty=${qty}`);
@@ -102,7 +107,7 @@ function ProductPage() {
               </span>
               <span className="">
                 <h1 className="text-black dark:text-white text-xl font-normal tracking-widest uppercase">
-                  $ {product.price}
+                  {price.substring(0, price.length - 3)}
                 </h1>
               </span>
               <span className="">
@@ -116,21 +121,23 @@ function ProductPage() {
                     Cantidad:
                   </h1>
                 </span>
-                <span className="flex flex-row pt-1 pb-1">
+                <span className="flex flex-row pt-1 pb-2 h-14">
                   <button
                     onClick={decrementQty}
-                    className="px-2 py-2 rounded-l-md border-2 border-light dark:border-zinc-200 p-4 border-r-0"
+                    className="px-2 py-2 rounded-l-md border border-light dark:border-zinc-600 p-4 border-r-0"
                   >
                     <span>
                       <Minus className="fill-black dark:fill-white" />
                     </span>
                   </button>
-                  <button className="px-4 py-2 p-4 border-2 border-light dark:border-zinc-200 border-l-0 border-r-0">
-                    <span className="text-black dark:text-white">{qty}</span>
+                  <button className="px-4 py-2 p-4 border border-light dark:border-zinc-600 border-l-0 border-r-0">
+                    <span className="text-black dark:text-white text-sm">
+                      {qty}
+                    </span>
                   </button>
                   <button
                     onClick={incremenateQty}
-                    className="px-2 py-2 rounded-r-md border-2 border-light dark:border-zinc-200 p-4 border-l-0"
+                    className="px-2 py-2 rounded-r-md border border-light dark:border-zinc-600 p-4 border-l-0"
                   >
                     <span>
                       <Plus className="fill-black dark:fill-white" />

@@ -13,8 +13,8 @@ import { Link, useNavigate } from 'react-router-dom';
 // Icons
 import Fast from '../assets/svg/fast';
 import Close from '../assets/svg/close';
-import Add from '../assets/svg/add';
-import Remove from '../assets/svg/remove';
+import Plus from '../assets/svg/plus';
+import Minus from '../assets/svg/minus';
 
 import Message from './Message';
 
@@ -38,6 +38,10 @@ function Product(props) {
       setQty(qty - 1);
     }
   };
+  const price = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP'
+  }).format(props.product.price);
 
   const goToCart = () => {
     navigate(`/cart/${props.product._id}?qty=${qty}`);
@@ -117,7 +121,7 @@ function Product(props) {
             <div className="grid grid-cols-2 gap-10">
               <div className="col-span-2">
                 <span className="flex items-center">
-                  <h1 className="text-black dark:text-white text-sm font-bold uppercase tracking-widest w-80">
+                  <h1 className="pb-3 text-black dark:text-white text-sm font-bold uppercase tracking-widest w-80">
                     {props.product.name} Vol. {props.product.volume}
                   </h1>
                 </span>
@@ -133,7 +137,7 @@ function Product(props) {
                 </span>
                 <span className="flex items-center">
                   <h1 className="text-black dark:text-white text-sm font-normal capitalize">
-                    $ {props.product.price}
+                    {price.substring(0, price.length - 3)}
                   </h1>
                 </span>
                 <div className="pt-4">
@@ -142,24 +146,26 @@ function Product(props) {
                       Cantidad:
                     </h1>
                   </span>
-                  <span className="flex flex-row pt-1">
+                  <span className="flex flex-row pt-1 pb-2 h-14">
                     <button
                       onClick={decrementQty}
-                      className="px-2 py-2 rounded-l-md border-r-1 p-4 border-2 border-zinc-300 dark:border-zinc-800"
+                      className="px-2 py-2 rounded-l-md border border-light dark:border-zinc-600 p-4 border-r-0"
                     >
                       <span>
-                        <Remove className="fill-black dark:fill-white" />
+                        <Minus className="fill-black dark:fill-white" />
                       </span>
                     </button>
-                    <button className="px-4 py-2 border-l-0 border-r-0 border-2 border-zinc-300 dark:border-zinc-800 p-4">
-                      <span className="text-black dark:text-white">{qty}</span>
+                    <button className="px-4 py-2 p-4 border border-light dark:border-zinc-600 border-l-0 border-r-0">
+                      <span className="text-black dark:text-white text-sm">
+                        {qty}
+                      </span>
                     </button>
                     <button
                       onClick={incremenateQty}
-                      className="px-2 py-2 rounded-r-md border-l-1  p-4 border-2 border-zinc-300 dark:border-zinc-800"
+                      className="px-2 py-2 rounded-r-md border border-light dark:border-zinc-600 p-4 border-l-0"
                     >
                       <span>
-                        <Add className="fill-black dark:fill-white" />
+                        <Plus className="fill-black dark:fill-white" />
                       </span>
                     </button>
                   </span>

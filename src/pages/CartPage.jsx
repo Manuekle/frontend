@@ -41,6 +41,13 @@ function CartPage() {
     }
   }, [dispatch, params.id, qty]);
 
+  const total = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0);
+
+  const price = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP'
+  }).format(total);
+
   const checkoutHandler = () => {
     if (userInfo) {
       navigate('/shipping');
@@ -126,12 +133,7 @@ function CartPage() {
                 <span>
                   <h1 className="font-semibold text-md capitalize text-black dark:text-white flex justify-between">
                     Total:
-                    <span>
-                      $
-                      {cartItems
-                        .reduce((acc, item) => acc + item.qty * item.price, 0)
-                        .toFixed(2)}
-                    </span>
+                    <span>{price.substring(0, price.length - 3)}</span>
                   </h1>
                 </span>
                 {cartItems.length === 0 ? (

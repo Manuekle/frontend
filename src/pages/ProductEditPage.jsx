@@ -241,7 +241,7 @@ function ProductEditPage() {
                 </label>
                 <input
                   min="1"
-                  max="100000"
+                  max="1000000"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                   type="number"

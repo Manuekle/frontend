@@ -25,6 +25,11 @@ function Card(props) {
 
   const [openProduct, cycleOpenProduct] = useCycle(false, true);
 
+  const price = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP'
+  }).format(product.price);
+
   const openProductHandler = () => {
     cycleOpenProduct();
   };
@@ -63,10 +68,10 @@ function Card(props) {
               Editorial {product.editorial}
             </h1>
             <h1 className="text-zinc-700 dark:text-zinc-100 text-sm font-bold capitalize">
-              {name.length > 16
+              {name.length > 15
                 ? `${
                     name.charAt(0).toUpperCase() +
-                    name.slice(1).substring(0, 16)
+                    name.slice(1).substring(0, 15)
                   }...`
                 : `${name.charAt(0).toUpperCase() + name.slice(1)} Vol. ${
                     product.volume
@@ -76,7 +81,7 @@ function Card(props) {
           <section className="grid grid-cols-2 px-12 pt-3 pb-4">
             <div className="col-span-1 flex items-center justify-start ">
               <h1 className="text-zinc-700 dark:text-zinc-100 text-sm font-bold capitalize">
-                $ {product.price}
+                {price.substring(0, price.length - 3)}
               </h1>
             </div>
             <div className="col-span-1 flex items-center justify-end">

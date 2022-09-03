@@ -8,7 +8,7 @@ import Best from '../components/Best';
 
 function HomePage() {
   return (
-    <section className="container mx-auto">
+    <section className="container mx-auto mb-20">
       <div>
         <Promotions />
       </div>
