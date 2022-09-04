@@ -125,7 +125,6 @@ function News() {
     setDate();
   }, [dispatch, keyword]);
 
-  // // console.log(filter);
   return (
     <>
       {loading ? (

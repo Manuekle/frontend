@@ -104,7 +104,11 @@ function Card(props) {
             className="fixed top-0 left-0 right-0 bottom-0"
           >
             <>
-              <Product onClick={cycleOpenProduct} product={product} />
+              <Product
+                onClick={cycleOpenProduct}
+                product={product}
+                key={product}
+              />
             </>
           </motion.div>
         )}

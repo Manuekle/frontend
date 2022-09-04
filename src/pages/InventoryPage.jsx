@@ -137,7 +137,10 @@ function InventoryPage() {
             </div>
           )}
           {products.map((product) => (
-            <div className="lg:col-span-1 col-span-2 py-2 px-2 border-2 rounded-md dark:border-zinc-700">
+            <div
+              key={product}
+              className="lg:col-span-1 col-span-2 py-2 px-2 border-2 rounded-md dark:border-zinc-700"
+            >
               <div className="grid grid-cols-4">
                 <div className="col-span-4 lg:col-span-3 flex flex-row items-center gap-4">
                   <Link to={`/product/${product._id}`}>

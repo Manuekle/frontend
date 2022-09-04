@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-no-useless-fragment */
@@ -5,41 +6,51 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { AnimatePresence, motion, useCycle } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 import { listProducts } from '../actions/productActions';
 
-// import { Link } from "react-router-dom";
-// Components
-import Card from '../components/Card';
 import Categories from '../components/Categories';
 import Editorials from '../components/Editorials';
 import Error from '../components/Error';
-import Paginate from '../components/Paginate';
+import Card from '../components/Card';
 
 import Loader from '../assets/svg/loader';
 
 import Plus from '../assets/svg/plus';
 import Minus from '../assets/svg/minus';
 
+import Arrow from '../assets/svg/arrow';
+
 function StoragePage() {
+  const dispatch = useDispatch();
   const [openCategories, cycleOpenCategories] = useCycle(false, true);
   const [openEditorials, cycleOpenEditorials] = useCycle(false, true);
 
-  const dispatch = useDispatch();
-  const location = useLocation();
-
-  const keyword = location.search;
-
   const productList = useSelector((state) => state.productList);
-  const { error, loading, products, page, pages } = productList;
+  const { error, loading, products } = productList;
+
+  const itemsPerPage = 2;
+
+  // const [currentItems, setCurrentItems] = useState([]);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = products.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(products.length / itemsPerPage);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % products.length;
+    setItemOffset(newOffset);
+  };
 
   useEffect(() => {
-    dispatch(listProducts(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listProducts());
+  }, [dispatch]);
+
+  console.log(currentItems);
 
   return (
     <>
@@ -144,14 +155,49 @@ function StoragePage() {
                 </div>
               </AnimatePresence>
             </div>
-            <div className="col-span-12 lg:col-span-9 p-2 h-auto w-auto">
-              <div className="relative grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
-                {products.map((product) => (
-                  <Card product={product} />
-                ))}
+            <>
+              <div className="col-span-12 lg:col-span-9 p-2 h-auto w-auto">
+                <div className="relative grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-4 xl:px-0">
+                  {currentItems &&
+                    currentItems.map((product) => (
+                      <Card product={product} key={product.name} />
+                    ))}
+                </div>
+                <div className="flex flex-row justify-center items-centered gap-4 pt-8 pb-6">
+                  <ReactPaginate
+                    previousLabel={
+                      <button className="bg-light-200 dark:bg-dark-200 p-4 rounded-lg shadow-lg">
+                        <Arrow className="dark:fill-white fill-black" />
+                      </button>
+                    }
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={1}
+                    marginPagesDisplayed={1}
+                    pageCount={pageCount}
+                    nextLabel={
+                      <button className="bg-light-200 dark:bg-dark-200 p-4 rounded-lg shadow-lg">
+                        <Arrow
+                          className="dark:fill-white fill-black"
+                          style={{
+                            transform: 'rotate(180deg)'
+                          }}
+                        />
+                      </button>
+                    }
+                    containerClassName="flex flex-row justify-center items-center gap-4"
+                    pageClassName={
+                      <button className="flex flex-row items-center border"></button>
+                    }
+                    pageLinkClassName="bg-light-200 dark:bg-dark-200 p-4 rounded-lg shadow-lg"
+                    breakLabel="..."
+                    breakClassName="bg-light-200 dark:bg-dark-200 p-4 rounded-lg shadow-lg dark:text-white"
+                    breakLinkClassName=""
+                    activeClassName=""
+                    renderOnZeroPageCount={null}
+                  />
+                </div>
               </div>
-              {/* <Paginate page={page} pages={pages} keyword={keyword} /> */}
-            </div>
+            </>
           </div>
           <div className="grid grid-cols-1 p-2 mt-10 px-44 gap-4">
             <span>
